@@ -47,4 +47,24 @@ class BlogPost extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    /**
+     * Категория статьи
+     *
+     * @return mixed
+     */
+    public function category()
+    {
+        return $this->belongsTo(BlogCategory::class);
+    }
+
+    /**
+     * Автор статьи
+     *
+     * @return mixed
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
