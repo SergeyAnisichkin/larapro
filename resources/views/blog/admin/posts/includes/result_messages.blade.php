@@ -1,5 +1,3 @@
-<?php
-
 @php /** @var \Illuminate\Support\ViewErrorBag $errors */ @endphp
 
 @if($errors->any())
