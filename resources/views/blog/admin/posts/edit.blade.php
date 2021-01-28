@@ -31,7 +31,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="card card-block">
-                            <button type="submit" class="card btn btn-link">Удалить</button>
+                            <div class="card-body ml-auto">
+                                <button type="submit" class="card btn btn-link">Удалить</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3"></div>
