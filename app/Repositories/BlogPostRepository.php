@@ -43,6 +43,7 @@ class BlogPostRepository extends CoreRepository
             'id',
             'title',
             'slug',
+            'content_raw',
             'is_published',
             'published_at',
             'user_id',

@@ -48,6 +48,12 @@ class BlogPost extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'title',
+        'slug',
+        'content_raw',
+    ];
+
     /**
      * Категория статьи
      *
