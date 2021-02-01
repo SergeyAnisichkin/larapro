@@ -9,6 +9,20 @@ use Illuminate\Support\Str;
 class BlogPostObserver
 {
     /**
+     * (UNTIL) Handle the BlogPost "created" event.
+     *
+     * @param  \App\Models\BlogPost  $blogPost
+     * @return void
+     */
+    public function creating(BlogPost $blogPost)
+    {
+        $this->setPublishedAt($blogPost);
+        $this->setSlug($blogPost);
+        $this->setHtml($blogPost);
+        $this->setUser($blogPost);
+    }
+
+    /**
      * Handle the BlogPost "created" event.
      *
      * @param  \App\Models\BlogPost  $blogPost
@@ -19,16 +33,6 @@ class BlogPostObserver
         //
     }
 
-    /**
-     * Handle the BlogPost "updated" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function updated(BlogPost $blogPost)
-    {
-        //
-    }
 
     /**
      * (UNTIL) Handle the BlogPost "updated" event.
@@ -40,6 +44,17 @@ class BlogPostObserver
     {
         $this->setPublishedAt($blogPost);
         $this->setSlug($blogPost);
+    }
+
+    /**
+     * Handle the BlogPost "updated" event.
+     *
+     * @param  \App\Models\BlogPost  $blogPost
+     * @return void
+     */
+    public function updated(BlogPost $blogPost)
+    {
+        //
     }
 
     /**
@@ -60,6 +75,25 @@ class BlogPostObserver
         if (empty($blogPost->slug)) {
             $blogPost->slug = Str::slug($blogPost->title);
         }
+    }
+
+    /**
+     * @param  \App\Models\BlogPost  $blogPost
+     */
+    protected function setHtml(BlogPost $blogPost)
+    {
+        if ($blogPost->isDirty('content_raw')) {
+            //TODO: convert markdown -> html
+            $blogPost->content_html = $blogPost->content_raw;
+        }
+    }
+
+    /**
+     * @param  \App\Models\BlogPost  $blogPost
+     */
+    protected function setUser(BlogPost $blogPost)
+    {
+        $blogPost->user_id = auth()->id() ?? BlogPost::UNKNOWN_USER;
     }
 
     /**

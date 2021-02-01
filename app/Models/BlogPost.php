@@ -48,6 +48,8 @@ class BlogPost extends Model
     use HasFactory;
     use SoftDeletes;
 
+    const UNKNOWN_USER = 1; //TODO: until admin panel
+
     protected $fillable = [
         'title',
         'slug',
@@ -56,7 +58,6 @@ class BlogPost extends Model
         'content_raw',
         'is_published',
         'published_at',
-        'user_id',
     ];
 
     /**

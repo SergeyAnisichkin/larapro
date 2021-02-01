@@ -1,5 +1,3 @@
-@php /** @var \Illuminate\Support\ViewErrorBag $errors */ @endphp
-
 @if($errors->any())
     <div class="row justify-content-center">
         <div class="col-md-11">
@@ -7,7 +5,9 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                {{ $errors->first() }}
+                @foreach($errors->all() as $errorText)
+                    <li>{{ $errorText }}</li>
+                @endforeach
             </div>
         </div>
     </div>

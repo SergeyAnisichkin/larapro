@@ -43,6 +43,7 @@
                                    rows="20">{{ old('content_raw', $item->content_raw) }}</textarea>
                         </div>
                     </div>
+
                     <div class="tab-pane" id="adddata" role="tabpanel">
 
                         <div class="form-group">
