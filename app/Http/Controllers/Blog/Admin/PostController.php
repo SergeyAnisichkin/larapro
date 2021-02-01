@@ -75,7 +75,7 @@ class PostController extends BaseController
      */
     public function show($id)
     {
-        //
+        dd(__METHOD__, $id);
     }
 
     /**
@@ -100,7 +100,7 @@ class PostController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  BlogCategoryUpdateRequest  $request
+     * @param  BlogPostUpdateRequest  $request
      * @param  int  $id
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -117,12 +117,12 @@ class PostController extends BaseController
 
         $data = $request->all();
 
-        if (empty($data['slug'])) {
-            $data['slug'] = Str::slug( $data['title']);
-        }
-        if (empty($item->published_at) && $data['is_published']) {
-            $data['published_at'] = Carbon::now();
-        }
+//        if (empty($data['slug'])) {
+//            $data['slug'] = Str::slug( $data['title']);
+//        }
+//        if (empty($item->published_at) && $data['is_published']) {
+//            $data['published_at'] = Carbon::now();
+//        }
 
         $result = $item->update($data);
 
