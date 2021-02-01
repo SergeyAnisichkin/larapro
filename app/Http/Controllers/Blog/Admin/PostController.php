@@ -53,7 +53,7 @@ class PostController extends BaseController
      */
     public function create()
     {
-        //
+        dd(__METHOD__);
     }
 
     /**
@@ -64,7 +64,7 @@ class PostController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        dd(__METHOD__, $request->all());
     }
 
     /**
@@ -116,13 +116,6 @@ class PostController extends BaseController
         }
 
         $data = $request->all();
-
-//        if (empty($data['slug'])) {
-//            $data['slug'] = Str::slug( $data['title']);
-//        }
-//        if (empty($item->published_at) && $data['is_published']) {
-//            $data['published_at'] = Carbon::now();
-//        }
 
         $result = $item->update($data);
 
