@@ -150,13 +150,21 @@ class PostController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        dd( __METHOD__, $request->all(), $id);
+        $result = BlogPost::destroy($id);
+
+        if($result) {
+            return redirect()
+                ->route('blog.admin.posts.index')
+                ->with(['success' => "Запись id=[{$id}] удалена."]);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка удаления"]);
+        }
     }
 }

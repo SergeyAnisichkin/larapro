@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class BlogPostObserver
 {
     /**
-     * (UNTIL) Handle the BlogPost "created" event.
+     * (BEFORE) Handle the BlogPost "created" event.
      *
      * @param  \App\Models\BlogPost  $blogPost
      * @return void
@@ -33,9 +33,8 @@ class BlogPostObserver
         //
     }
 
-
     /**
-     * (UNTIL) Handle the BlogPost "updated" event.
+     * (BEFORE) Handle the BlogPost "updated" event.
      *
      * @param  \App\Models\BlogPost  $blogPost
      * @return void
