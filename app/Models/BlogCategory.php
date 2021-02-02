@@ -35,10 +35,47 @@ class BlogCategory extends Model
     use HasFactory;
     use SoftDeletes;
 
+    const ROOT = 1;
+
     protected $fillable = [
         'title',
         'slug',
         'parent_id',
         'description',
     ];
+
+    /**
+     * Parent category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parentCategory()
+    {
+        return $this->belongsTo(BlogCategory::class, 'parent_id', 'id');
+    }
+
+    /**
+     * Parent title accessor
+     *
+     * @return string
+     */
+    public function getParentTitleAttribute()
+    {
+        $title = $this->parentCategory->title
+            ?? ($this->isRoot()
+            ? 'Root'
+            : '???');
+
+        return $title;
+    }
+
+    /**
+     * Check root category
+     *
+     * @return mixed
+     */
+    public function isRoot()
+    {
+        return $this->id === BlogCategory::ROOT;
+    }
 }

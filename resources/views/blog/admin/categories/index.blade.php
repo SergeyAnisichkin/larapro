@@ -29,7 +29,7 @@
                                         {{ $item->title }}
                                     </a>
                                 </td>
-                                <td>{{ $item->parent_id }}</td>
+                                <td>{{ $item->parentTitle }}</td>
                             </tr>
                         @endforeach
                         </tbody>
