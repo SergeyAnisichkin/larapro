@@ -55,7 +55,7 @@ class PostController extends BaseController
      */
     public function create()
     {
-        $item = new BlogPost();
+        $item = BlogPost::make();
         $categoryList = $this->blogCategoryRepository->getForComboBox();
 
         return view('blog.admin.posts.edit', compact('item', 'categoryList'));
@@ -71,7 +71,7 @@ class PostController extends BaseController
     {
         $data = $request->input();
 
-        $item = (new BlogPost())->create($data);
+        $item = BlogPost::create($data);
 
         if ($item) {
             return redirect()
