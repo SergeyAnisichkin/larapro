@@ -29,7 +29,7 @@ class BlogPostFactory extends Factory
 
         return [
             'category_id' => rand(1, 11),
-            'user_id' => (rand(1, 5) == 5) ? 1 : 2,
+            'user_id' => (rand(1, 5) == 5) ? 13 : 14,
             'title' => $title,
             'slug' => Str::slug($title),
             'excerpt' => $this->faker->text(rand(40, 100)),
