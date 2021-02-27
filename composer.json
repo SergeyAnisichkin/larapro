@@ -39,6 +39,10 @@
         }
     },
     "autoload": {
+        "files": [
+            "config/init.php",
+            "config/params.php"
+        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
