@@ -20,9 +20,9 @@
     }
 
     // http://laravel.blog.san/index.php
-    //$app_path = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
+    $allowed_hosts = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
 
-    $allowed_hosts = 'http://laravel.blog.san/index.php';
+    //$allowed_hosts = 'http://laravel.blog.san/index.php';
 
     //http://laravel.blog.san/
     $app_path = preg_replace("#[^/]+$#", '', $allowed_hosts);
