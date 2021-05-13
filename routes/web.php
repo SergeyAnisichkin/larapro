@@ -33,8 +33,28 @@ Route::group(['middleware' => ['status','auth']], function () {
 
     });
 });
+//-------------------------
+
+// User side
+$groupeData = [
+    'namespace' => 'App\Http\Controllers\Shop\User',
+    'prefix' => 'user',
+];
+Route::group($groupeData, function () {
+    Route::resource('index', 'MainController')
+        ->names('shop.user.index');
+});
 //---------
 
+//Disabled side - in that moment don`t work yet
+$groupeData = [
+    'namespace' => 'App\Http\Controllers\Shop\Disabled',
+    'prefix' => 'disabled',
+];
+Route::group($groupeData, function () {
+    Route::resource('index', 'MainController')
+        ->names('shop.disabled.index');
+});
 
 
 //>  Blog Admin ------------------------
