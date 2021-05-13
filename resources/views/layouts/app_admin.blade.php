@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {{--<base href="/adminlte/">--}}
     <link rel="shortcut icon" href="" type="image/png" />
-    <title>{!! MetaTag::tag('title') !!}</title>
+    <title>Admin</title><!--  MetaTag::tag('title') !!} todo -->
 <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -53,7 +53,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{{route('blog.admin.index.index')}}" class="logo">
+        <a href="{{route('shop.admin.index.index')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -86,7 +86,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{route('blog.admin.users.edit',Auth::user()->id)}}" class="btn btn-default btn-flat">Профиль</a>
+                                    <a href="#" class="btn btn-default btn-flat">Профиль</a><!-- todo origin-->
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -126,8 +126,8 @@
                 <li class="header">Меню</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="/"><i class="fa fa-home"></i> <span>В магазин</span></a></li>
-                <li><a href="{{route('blog.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
-                <li><a href="{{route('blog.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li>
+                <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
+                <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li><!-- todo orders -->
 
 
 
@@ -138,8 +138,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.categories.index')}}">Список категорий</a></li>
-                        <li><a href="{{route('blog.admin.categories.create')}}">Добавить категорию</a></li>
+                        <li><a href="{{route('shop.admin.index.index')}}">Список категорий</a></li><!-- todo categories.index -->
+                        <li><a href="{{route('shop.admin.index.index')}}">Добавить категорию</a></li><!-- todo categories.create -->
                     </ul>
                 </li>
                 <li class="treeview">
@@ -149,11 +149,11 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.products.index')}}">Список товаров</a></li>
-                        <li><a href="{{route('blog.admin.products.create')}}">Добавить товар</a></li>
+                        <li><a href="{{route('shop.admin.index.index')}}">Список товаров</a></li><!-- todo products.index -->
+                        <li><a href="{{route('shop.admin.index.index')}}">Добавить товар</a></li><!-- todo products.create -->
                     </ul>
                 </li>
-                <li><a href="{{route('blog.admin.cache')}}"><i class="fa fa-database"></i> <span>Кэширование</span></a></li>
+                <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-database"></i> <span>Кэширование</span></a></li><!-- todo admin.cache -->
                 <li class="treeview">
                     <a href="#"><i class="fa fa-users"></i> <span>Пользователи</span>
                         <span class="pull-right-container">
@@ -161,8 +161,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('blog.admin.users.index')}}">Список пользователей</a></li>
-                        <li><a href="{{route('blog.admin.users.create')}}">Добавить пользователя</a></li>
+                        <li><a href="{{route('shop.admin.index.index')}}">Список пользователей</a></li><!-- todo users.index -->
+                        <li><a href="{{route('shop.admin.index.index')}}">Добавить пользователя</a></li><!-- todo users.create -->
                     </ul>
                 </li>
                 <li class="treeview">
@@ -211,7 +211,8 @@
     <div class="content-wrapper">
 
         <main id="app">
-            @include('blog.admin.components.result_messages')
+
+        <!-- todo blog.admin.components.result_messages@include('') -->
             @yield('content')
 
         </main>
@@ -270,10 +271,10 @@
 <!-- === = ===  -->
 
 <script src="{{asset('js/my.js')}}"></script>
-
-@include('blog.admin.product.include.script_img')
-@include('blog.admin.product.include.script_gallery')
-@include('blog.admin.product.include.script_related_prod')
+<!-- todo  -->
+{{--@include('blog.admin.product.include.script_img')--}}
+{{--@include('blog.admin.product.include.script_gallery')--}}
+{{--@include('blog.admin.product.include.script_related_prod')--}}
 
 
 </body>
