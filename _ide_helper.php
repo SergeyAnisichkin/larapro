@@ -15944,6 +15944,164 @@
      
 }
 
+    namespace Fomvasss\LaravelMetaTags { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function render()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param string $template
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setTemplate($template)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setTemplate($template);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getTemplate()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getTemplate();
+        }
+                    /**
+         * 
+         *
+         * @param \Illuminate\Database\Eloquent\Model $entityModel
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setEntity($entityModel)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setEntity($entityModel);
+        }
+                    /**
+         * Set current path.
+         *
+         * @param string $path
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setPath($path = null)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setPath($path);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPath()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getPath();
+        }
+                    /**
+         * 
+         *
+         * @param array $tags
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setTags($tags = [])
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setTags($tags);
+        }
+                    /**
+         * 
+         *
+         * @param array $defaultTags
+         * @static 
+         */ 
+        public static function setDefault($defaultTags = [])
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setDefault($defaultTags);
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function get()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->get();
+        }
+                    /**
+         * 
+         *
+         * @param string $tag
+         * @return string 
+         * @static 
+         */ 
+        public static function tag($tag)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->tag($tag);
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getForEntity()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getForEntity();
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getForPath()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getForPath();
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getResult()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getResult();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -19269,6 +19427,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class MetaTag extends \Fomvasss\LaravelMetaTags\Facade {}
      
 }
 
