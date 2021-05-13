@@ -20,11 +20,28 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+/** Admin side ------------ */
+Route::group(['middleware' => ['status','auth']], function () {
+    $groupeData = [
+        'namespace' => 'App\Http\Controllers\Shop\Admin',
+        'prefix' => 'admin',
+    ];
+    Route::group($groupeData, function () {
+        Route::resource('index', 'MainController')
+            ->names('shop.admin.index');
+
+    });
+});
+//---------
+
+
+
+//>  Blog Admin ------------------------
 Route::group(['namespace' => 'App\Http\Controllers\Blog', 'prefix' => 'blog'], function () {
     Route::resource('posts', 'PostController')->names('blog.posts');
 });
 
-//>  Blog Admin
 $groupData = [
     'namespace' => 'App\Http\Controllers\Blog\Admin',
     'prefix' => 'admin/blog',

@@ -14,16 +14,14 @@
 
 
     $host = FALSE;
+    $allowed_hosts = 'http://laravel.blog.san/index.php';
 
     if (isset($_SERVER['HTTP_HOST'])) {
         $host = $_SERVER['HTTP_HOST'];
+        $allowed_hosts = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
     }
 
     // http://laravel.blog.san/index.php
-    $allowed_hosts = "http://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}";
-
-    //$allowed_hosts = 'http://laravel.blog.san/index.php';
-
     //http://laravel.blog.san/
     $app_path = preg_replace("#[^/]+$#", '', $allowed_hosts);
     //http://laravel.blog.san/
