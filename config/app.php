@@ -167,6 +167,8 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -227,6 +229,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // My aliases
+        'MetaTag' => Torann\LaravelMetaTags\Facades\MetaTag::class,
 
     ],
 
