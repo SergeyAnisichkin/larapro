@@ -64,6 +64,7 @@
                 ->orderBy('orders.id')
                 ->limit(1)
                 ->first();
+
             return $order;
         }
 
@@ -73,6 +74,7 @@
             $orderProducts = \DB::table('order_products')
                 ->where('order_id', $order_id)
                 ->get();
+
             return $orderProducts;
         }
 

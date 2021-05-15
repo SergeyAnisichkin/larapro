@@ -30,6 +30,8 @@ Route::group(['middleware' => ['status','auth']], function () {
     Route::group($groupeData, function () {
         Route::resource('index', 'MainController')
             ->names('shop.admin.index');
+        Route::resource('orders', 'OrderController')
+            ->names('shop.admin.orders');
 
     });
 });
