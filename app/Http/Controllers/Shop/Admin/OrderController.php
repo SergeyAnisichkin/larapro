@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Order;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\OrderRepository;
 use Illuminate\Http\Request;
@@ -125,10 +126,22 @@ class OrderController extends AdminBaseController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $status = $this->orderRepository->changeStatusOnDelete($id);
+        if ($status) {
+            $result = Order::destroy($id);
+            if ($result) {
+                return redirect()
+                    ->route('shop.admin.orders.index')
+                    ->with(['success' => "Запись id [$id] удалена"]);
+            } else {
+                return back()->withErrors(['msg' => 'Ошибка удаления']);
+            }
+        } else {
+            return back()->withErrors(['msg' => 'Статут не изменился']);
+        }
     }
 }

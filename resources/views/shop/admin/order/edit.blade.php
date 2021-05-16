@@ -17,8 +17,8 @@
             @endif
 
         <a class="btn btn-xs" href="">
-            <form id="delform" method="post" action="{{route('shop.admin.index.index', $item->id)}}"
-                  style="float: none"><!-- todo orders.destroy -->
+            <form id="delform" method="post" action="{{route('shop.admin.orders.destroy', $item->id)}}"
+                  style="float: none">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-xs delete">Удалить</button>
