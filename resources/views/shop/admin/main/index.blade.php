@@ -24,7 +24,7 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="{{route('shop.admin.index.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a><!-- todo orders.index-->
+                    <a href="{{route('shop.admin.orders.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

@@ -25,8 +25,8 @@
                 <tbody>
                 @foreach($last_orders as $order)
                     <tr>
-                        <td><a href="{{route('shop.admin.index.index',$order->id)}}">{{$order->id}}</a></td><!-- todo orders.edit-->
-                        <td><a href="{{route('shop.admin.index.index',$order->id)}}">{{ucfirst($order->name)}}</a></td><!-- todo orders.edit-->
+                        <td><a href="{{route('shop.admin.orders.edit',$order->id)}}">{{$order->id}}</a></td>
+                        <td><a href="{{route('shop.admin.orders.edit',$order->id)}}">{{ucfirst($order->name)}}</a></td>
                         <td><span class="label label-success">
                                  @if ($order->status == 0)Новый@endif
                                 @if ($order->status == 1)Завершен@endif
@@ -47,7 +47,7 @@
     <br>
     <!-- /.box-body -->
     <div class="box-footer clearfix">
-        <a href="{{route('shop.admin.index.index')}}" class="btn btn-sm btn-info btn-flat pull-left">Все заказы</a><!-- todo orders.index-->
+        <a href="{{route('shop.admin.orders.index')}}" class="btn btn-sm btn-info btn-flat pull-left">Все заказы</a>
     </div>
     <!-- /.box-footer -->
 </div>

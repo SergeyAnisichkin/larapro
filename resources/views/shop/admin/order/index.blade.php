@@ -47,8 +47,8 @@
                                         <td>{{$order->updated_at}}</td>
 
                                         <td>
-                                            <!-- todo orders.edit--><a href="{{route('shop.admin.orders.edit',$order->id)}}" title="редактировать заказ"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;&nbsp;
-                                            <!-- todo orders.forcedestroy--><a href="{{route('shop.admin.index.index', $order->id)}}" title="удалить из БД"><i class="fa fa-fw fa-close text-danger deleted"></i></a>&nbsp;&nbsp;&nbsp;
+                                            <a href="{{route('shop.admin.orders.edit', $order->id)}}" title="редактировать заказ"><i class="fa fa-fw fa-eye"></i></a>&nbsp;&nbsp;&nbsp;
+                                            <a href="{{route('shop.admin.orders.forcedestroy', $order->id)}}" title="удалить из БД"><i class="fa fa-fw fa-close text-danger deletebd"></i></a>&nbsp;&nbsp;&nbsp;
                                         </td>
                                     </tr>
                                 @empty

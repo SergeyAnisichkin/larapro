@@ -146,6 +146,28 @@ class OrderController extends AdminBaseController
         }
     }
 
+    /**
+     * Полное удаление
+     * @param $id
+     */
+    public function forcedestroy($id)
+    {
+        if (empty($id)){
+            return back()->withErrors(['msg' => 'Запись не найдена']);
+        }
+
+        $res = \DB::table('orders')
+            ->delete($id);
+
+        if ($res) {
+            return redirect()
+                ->route('shop.admin.orders.index')
+                ->with(['success' => "Запись id [$id] удалена из БД"]);
+        } else {
+            return back()->withErrors(['msg' => 'Ошибка удаления']);
+        }
+    }
+
 
     public function save(AdminOrderSaveRequest $request, $id)
     {
