@@ -212,7 +212,7 @@
 
         <main id="app">
 
-        <!-- todo blog.admin.components.result_messages@include('') -->
+            @include('shop.admin.components.result_messages')
             @yield('content')
 
         </main>

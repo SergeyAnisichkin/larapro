@@ -93,6 +93,22 @@ class OrderController extends AdminBaseController
             compact('item', 'order', 'order_products'));
     }
 
+
+    public function change($id)
+    {
+        $result = $this->orderRepository->changeStatusOrder($id);
+
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.orders.edit', $id)
+                ->with(['success' => 'Успешно сохранено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка сохранения"]);
+        }
+    }
+
+
     /**
      * Update the specified resource in storage.
      *

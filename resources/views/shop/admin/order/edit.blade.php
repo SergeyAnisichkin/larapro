@@ -10,10 +10,10 @@
         Заказ № {{$item->id}}
     <!-- если заказ новый не обработан то выведу и передадим status 1 -->
             @if (!$order->status)
-                <a href="{{route('shop.admin.index.index',$item->id)}}/?status=1" class="btn btn-success btn-xs">Одобрить</a><!-- todo orders.change -->
+                <a href="{{route('shop.admin.orders.change',$item->id)}}/?status=1" class="btn btn-success btn-xs">Одобрить</a>
                 <a href="#" class="btn btn-warning btn-xs redact">Редактировать</a>
             @else
-                <a href="{{route('shop.admin.index.index',$item->id)}}/?status=0" class="btn btn-default btn-xs">Вернуть на доработку</a><!-- todo orders.change -->
+                <a href="{{route('shop.admin.orders.change',$item->id)}}/?status=0" class="btn btn-default btn-xs">Вернуть на доработку</a>
             @endif
 
         <a class="btn btn-xs" href="">
@@ -42,7 +42,7 @@
             <div class="box">
                 <div class="box-body">
                     <div class="table-responsive">
-                        <form action="{{route('shop.admin.index.index',$item->id)}}" method="post"><!-- todo orders.save -->
+                        <form action="{{route('shop.admin.orders.save',$item->id)}}" method="post">
 
                             @csrf
                             <table class="table table-bordered table-hover">

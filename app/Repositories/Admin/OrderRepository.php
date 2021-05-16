@@ -87,6 +87,7 @@
             }
             $item->status = !empty($_GET['status']) ? '1' : '0';
             $result = $item->update();
+
             return $result;
         }
 
