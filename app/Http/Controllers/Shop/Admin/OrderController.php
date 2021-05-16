@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminOrderSaveRequest;
 use App\Models\Admin\Order;
 use App\Repositories\Admin\MainRepository;
 use App\Repositories\Admin\OrderRepository;
@@ -142,6 +143,21 @@ class OrderController extends AdminBaseController
             }
         } else {
             return back()->withErrors(['msg' => 'Статут не изменился']);
+        }
+    }
+
+
+    public function save(AdminOrderSaveRequest $request, $id)
+    {
+        $result = $this->orderRepository->saveOrderComment($id);
+
+        if ($result) {
+            return redirect()
+                ->route('shop.admin.orders.edit', $id)
+                ->with(['success' => 'Успешно сохранено']);
+        } else {
+            return back()
+                ->withErrors(['msg' => "Ошибка сохранения"]);
         }
     }
 }

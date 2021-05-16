@@ -100,6 +100,7 @@
             }
             $item->note = !empty($_POST['comment']) ? $_POST['comment'] : null;
             $result = $item->update();
+
             return $result;
         }
 
