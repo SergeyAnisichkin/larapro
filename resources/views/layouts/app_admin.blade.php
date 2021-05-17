@@ -127,7 +127,7 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="/"><i class="fa fa-home"></i> <span>В магазин</span></a></li>
                 <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
-                <li><a href="{{route('shop.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li><!-- todo orders -->
+                <li><a href="{{route('shop.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li>
 
 
 
@@ -138,8 +138,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.index.index')}}">Список категорий</a></li><!-- todo categories.index -->
-                        <li><a href="{{route('shop.admin.index.index')}}">Добавить категорию</a></li><!-- todo categories.create -->
+                        <li><a href="{{route('shop.admin.categories.index')}}">Список категорий</a></li>
+                        <li><a href="{{route('shop.admin.categories.create')}}">Добавить категорию</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
