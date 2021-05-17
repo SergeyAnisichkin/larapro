@@ -7,7 +7,7 @@
         <li><a href="{{route('shop.admin.orders.index')}}"><i></i>{{$order}}</a></li>
     @endif
     @if (isset($category))
-        <li><a href="{{route('shop.admin.index.index')}}"><i></i>{{$category}}</a></li><!-- todo categories.index -->
+        <li><a href="{{route('shop.admin.categories.index')}}"><i></i>{{$category}}</a></li>
     @endif
     @if (isset($user))
         <li><a href="{{route('shop.admin.index.index')}}"><i></i>{{$user}}</a></li><!-- todo users.index -->

@@ -13,7 +13,7 @@
             </option>
 
         @if (count($category_list->children) > 0)
-            @include('blog.admin.category.include.edit_categories_all_list',
+            @include('shop.admin.category.include.edit_categories_all_list',
             [
                 'categories' => $category_list->children,
                 'delimiter' => ' - ' . $delimiter,

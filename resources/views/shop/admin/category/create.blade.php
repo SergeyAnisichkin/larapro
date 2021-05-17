@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Создание категории @endslot
             @slot('parent') Главная @endslot
             @slot('category') Список категорий @endslot
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <form action="{{route('blog.admin.categories.store',$item->id)}}" method="post" data-toggle="validator">
+                    <form action="{{route('shop.admin.categories.store',$item->id)}}" method="post" data-toggle="validator">
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">
@@ -33,7 +33,7 @@
                                 <select name="parent_id" id="parent_id" class="form-control" required>
                                     <option value='0'>-- самостоятельная категория -- </option>
 
-                                    @include('blog.admin.category.include.edit_categories_all_list',['categories' => $categories])
+                                    @include('shop.admin.category.include.edit_categories_all_list', ['categories' => $categories])
 
                                 </select>
                             </div>
