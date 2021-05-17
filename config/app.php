@@ -167,6 +167,7 @@ return [
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,8 +230,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // My aliases
+        // Custom aliases
         'MetaTag' => Fomvasss\LaravelMetaTags\Facade::class,
+        'Menu'      => Lavary\Menu\Facade::class,
 
     ],
 

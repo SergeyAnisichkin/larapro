@@ -15115,7 +15115,165 @@
      
 }
 
-        namespace Barryvdh\Debugbar { 
+        namespace Fomvasss\LaravelMetaTags { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function render()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param string $template
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setTemplate($template)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setTemplate($template);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getTemplate()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getTemplate();
+        }
+                    /**
+         * 
+         *
+         * @param \Illuminate\Database\Eloquent\Model $entityModel
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setEntity($entityModel)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setEntity($entityModel);
+        }
+                    /**
+         * Set current path.
+         *
+         * @param string $path
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setPath($path = null)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setPath($path);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPath()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getPath();
+        }
+                    /**
+         * 
+         *
+         * @param array $tags
+         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @static 
+         */ 
+        public static function setTags($tags = [])
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setTags($tags);
+        }
+                    /**
+         * 
+         *
+         * @param array $defaultTags
+         * @static 
+         */ 
+        public static function setDefault($defaultTags = [])
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->setDefault($defaultTags);
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function get()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->get();
+        }
+                    /**
+         * 
+         *
+         * @param string $tag
+         * @return string 
+         * @static 
+         */ 
+        public static function tag($tag)
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->tag($tag);
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getForEntity()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getForEntity();
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getForPath()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getForPath();
+        }
+                    /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getResult()
+        {
+                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
+                        return $instance->getResult();
+        }
+         
+    }
+     
+}
+
+    namespace Barryvdh\Debugbar { 
             /**
      * 
      *
@@ -15944,158 +16102,96 @@
      
 }
 
-    namespace Fomvasss\LaravelMetaTags { 
+    namespace Lavary\Menu { 
             /**
      * 
      *
      */ 
         class Facade {
                     /**
-         * 
+         * Check if a menu builder exists.
          *
-         * @return mixed 
+         * @param string $name
+         * @return bool 
          * @static 
          */ 
-        public static function render()
+        public static function exists($name)
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->render();
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->exists($name);
         }
                     /**
-         * 
+         * Create a new menu builder instance.
          *
-         * @param string $template
-         * @return \Fomvasss\LaravelMetaTags\Builder 
+         * @param string $name
+         * @param callable $callback
+         * @return \Lavary\Menu\Builder 
          * @static 
          */ 
-        public static function setTemplate($template)
+        public static function makeOnce($name, $callback)
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->setTemplate($template);
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->makeOnce($name, $callback);
         }
                     /**
-         * 
+         * Create a new menu builder instance.
          *
-         * @return string 
+         * @param string $name
+         * @param callable $callback
+         * @param array $options (optional, it will be combined with the options to be applied)
+         * @return \Lavary\Menu\Builder 
          * @static 
          */ 
-        public static function getTemplate()
+        public static function make($name, $callback, $options = [])
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->getTemplate();
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->make($name, $callback, $options);
         }
                     /**
-         * 
+         * Loads and merges configuration data.
          *
-         * @param \Illuminate\Database\Eloquent\Model $entityModel
-         * @return \Fomvasss\LaravelMetaTags\Builder 
-         * @static 
-         */ 
-        public static function setEntity($entityModel)
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->setEntity($entityModel);
-        }
-                    /**
-         * Set current path.
-         *
-         * @param string $path
-         * @return \Fomvasss\LaravelMetaTags\Builder 
-         * @static 
-         */ 
-        public static function setPath($path = null)
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->setPath($path);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getPath()
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->getPath();
-        }
-                    /**
-         * 
-         *
-         * @param array $tags
-         * @return \Fomvasss\LaravelMetaTags\Builder 
-         * @static 
-         */ 
-        public static function setTags($tags = [])
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->setTags($tags);
-        }
-                    /**
-         * 
-         *
-         * @param array $defaultTags
-         * @static 
-         */ 
-        public static function setDefault($defaultTags = [])
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->setDefault($defaultTags);
-        }
-                    /**
-         * 
-         *
+         * @param string $name
          * @return array 
          * @static 
          */ 
-        public static function get()
+        public static function loadConf($name)
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->get();
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->loadConf($name);
         }
                     /**
-         * 
+         * Return Menu builder instance from the collection by key.
          *
-         * @param string $tag
-         * @return string 
+         * @param string $key
+         * @return \Lavary\Menu\Builder 
          * @static 
          */ 
-        public static function tag($tag)
+        public static function get($key)
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->tag($tag);
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->get($key);
         }
                     /**
-         * 
+         * Return Menu builder collection.
          *
-         * @return array 
+         * @return \Illuminate\Support\Collection 
          * @static 
          */ 
-        public static function getForEntity()
+        public static function getCollection()
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->getForEntity();
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->getCollection();
         }
                     /**
-         * 
+         * Alias for getCollection.
          *
-         * @return array 
+         * @return \Illuminate\Support\Collection 
          * @static 
          */ 
-        public static function getForPath()
+        public static function all()
         {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->getForPath();
-        }
-                    /**
-         * 
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getResult()
-        {
-                        /** @var \Fomvasss\LaravelMetaTags\Builder $instance */
-                        return $instance->getResult();
+                        /** @var \Lavary\Menu\Menu $instance */
+                        return $instance->all();
         }
          
     }
@@ -19425,9 +19521,10 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
+            class MetaTag extends \Fomvasss\LaravelMetaTags\Facade {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
-            class MetaTag extends \Fomvasss\LaravelMetaTags\Facade {}
+            class Menu extends \Lavary\Menu\Facade {}
      
 }
 
