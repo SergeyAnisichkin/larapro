@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Список меню категорий @endslot
             @slot('parent') Главная @endslot
             @slot('active') Список меню категорий @endslot
@@ -25,7 +25,7 @@
                         @if($menu)
                             <div class="list-group list-group-root well">
 
-                @include('blog.admin.category.menu.customMenuItems', ['items'=>$menu->roots()])
+{{--                @include('shop.admin.category.menu.customMenuItems', ['items'=>$menu->roots()])--}}
 
                             </div>
                         @endif
