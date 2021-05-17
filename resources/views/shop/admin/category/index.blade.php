@@ -25,7 +25,7 @@
                         @if($menu)
                             <div class="list-group list-group-root well">
 
-{{--                @include('shop.admin.category.menu.customMenuItems', ['items'=>$menu->roots()])--}}
+                @include('shop.admin.category.menu.customMenuItems', ['items'=>$menu->roots()])
 
                             </div>
                         @endif

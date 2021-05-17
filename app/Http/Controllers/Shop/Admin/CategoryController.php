@@ -36,11 +36,11 @@ class CategoryController extends AdminBaseController
     public function index()
     {
         $arrMenu = Category::all();
-        //$menu = $this->categoryRepository->buildMenu($arrMenu);
+        $menu = $this->categoryRepository->buildMenu($arrMenu);
 
         MetaTag::setTags(['title' => 'Список категорий']);
 
-        return view('shop.admin.category.index',['menu' => '']); // todo $menu
+        return view('shop.admin.category.index',['menu' => $menu]);
     }
 
 

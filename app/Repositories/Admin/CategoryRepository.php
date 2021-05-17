@@ -61,25 +61,25 @@
         }
 
 
-//        public function buildMenu($arrMenu)
-//        {
-//            $mBuilder = LavMenu::make('MyNav', function ($m) use ($arrMenu) {
-//                foreach ($arrMenu as $item) {
-//                    if ($item->parent_id == 0) {
-//                        $m->add($item->title, $item->id)
-//                            ->id($item->id);
-//                    } else {
-//                        if ($m->find($item->parent_id)) {
-//                            $m->find($item->parent_id)
-//                                ->add($item->title, $item->id)
-//                                ->id($item->id);
-//                        }
-//                    }
-//                }
-//            });
-//
-//            return $mBuilder;
-//        }
+        public function buildMenu($arrMenu)
+        {
+            $mBuilder = LavMenu::make('MyNav', function ($m) use ($arrMenu) {
+                foreach ($arrMenu as $item) {
+                    if ($item->parent_id == 0) {
+                        $m->add($item->title, $item->id)
+                            ->id($item->id);
+                    } else {
+                        if ($m->find($item->parent_id)) {
+                            $m->find($item->parent_id)
+                                ->add($item->title, $item->id)
+                                ->id($item->id);
+                        }
+                    }
+                }
+            });
+
+            return $mBuilder;
+        }
 
 
         public function getComboBoxCategories()
