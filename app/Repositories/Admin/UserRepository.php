@@ -44,7 +44,7 @@
         }
 
         /** One Order by User */
-        public function getUserOrders($user_id, $perpage)
+        public function getUserOrders($user_id, $perPage)
         {
             $orders = $this->startConditions()::withTrashed()
                 ->join('orders','orders.user_id','=','users.id')
@@ -54,7 +54,7 @@
                 ->groupBy('orders.id')
                 ->orderBy('orders.status')
                 ->orderBy('orders.id')
-                ->paginate($perpage);
+                ->paginate($perPage);
 
             return $orders;
         }
@@ -75,12 +75,13 @@
         }
 
         /** Count Orders*/
-        public function getCountOrders($id,$perpage)
+        public function getCountOrders($id, $perPage)
         {
             $count = \DB::table('orders')
                 ->where('user_id', $id)
-                ->limit($perpage)
+                ->limit($perPage)
                 ->get();
+
             return $count;
         }
 

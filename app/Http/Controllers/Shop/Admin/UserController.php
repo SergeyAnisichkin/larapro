@@ -105,15 +105,16 @@
          */
         public function edit($id)
         {
-            $perpage = 10;
+            $perPage = 10;
             $item = $this->userRepository->getEditId($id);
             if (empty($item)) {
                 abort(404);
             }
-            $orders = $this->userRepository->getUserOrders($id, $perpage);
+
+            $orders = $this->userRepository->getUserOrders($id, $perPage);
             $role = $this->userRepository->getUserRole($id);
             $count = $this->userRepository->getCountOrdersPag($id);
-            $count_orders = $this->userRepository->getCountOrders($id, $perpage);
+            $count_orders = $this->userRepository->getCountOrders($id, $perPage);
 
             MetaTag::setTags(['title' => "Редактирование профиля пользователя № {$item->id}"]);
 
