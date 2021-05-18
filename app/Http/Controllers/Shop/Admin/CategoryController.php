@@ -103,7 +103,7 @@ class CategoryController extends AdminBaseController
      *
      * @param  int $id
      * @param CategoryRepository $categoryRepository
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function edit($id, CategoryRepository $categoryRepository)
     {
@@ -115,6 +115,7 @@ class CategoryController extends AdminBaseController
         $categoryList = $this->categoryRepository->getComboBoxCategories();
 
         MetaTag::setTags(['title' => 'Редактирование категории']);
+
         return view('shop.admin.category.edit',[
             'categories' => Category::with('children')->where('parent_id','0')->get(),
             'delimiter' => '-',
@@ -128,10 +129,10 @@ class CategoryController extends AdminBaseController
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function update(BlogCategoryUpdateRequest $request, $id)
+    public function update(AdminCategoryUpdateRequest $request, $id)
     {
         $item = $this->categoryRepository->getEditId($id);
         if (empty($item)){
