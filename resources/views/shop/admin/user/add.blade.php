@@ -3,10 +3,8 @@
 
 @section('content')
 
-
-
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Добавление пользователя @endslot
             @slot('parent') Главная @endslot
             @slot('user') Список пользователей @endslot
@@ -21,7 +19,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <!--для валидации data-toggle="validator"-->
-                    <form action="{{route('blog.admin.users.store')}}" method="post" data-toggle="validator">
+                    <form action="{{route('shop.admin.users.store')}}" method="post" data-toggle="validator">
                         @csrf
                         <div class="box-body">
                             <div class="form-group has-feedback">

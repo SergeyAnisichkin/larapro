@@ -3,10 +3,8 @@
 
 @section('content')
 
-
-
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Редактирование пользователя @endslot
             @slot('parent') Главная @endslot
             @slot('user') Список пользователей @endslot
@@ -20,7 +18,7 @@
         <div class="col-md-12">
             <div class="box">
                 <!--для валидации data-toggle="validator"-->
-                <form action="{{route('blog.admin.users.update', $item->id)}}" method="post" data-toggle="validator">
+                <form action="{{route('shop.admin.users.update', $item->id)}}" method="post" data-toggle="validator">
                     @method('PUT')
                     @csrf
                     <div class="box-body">
@@ -90,7 +88,7 @@
                                 <td>{{$order->sum}} {{$order->currency}}</td>
                                 <td>{{$order->created_at}}</td>
                                 <td>{{$order->updated_at}}</td>
-                                <td><a href="{{route('blog.admin.orders.edit',$order->id)}}"><i class="fa fa-fw fa-eye"></i></a></td>
+                                <td><a href="{{route('shop.admin.orders.edit',$order->id)}}"><i class="fa fa-fw fa-eye"></i></a></td>
                             </tr>
                                 @endforeach
                             </tbody>

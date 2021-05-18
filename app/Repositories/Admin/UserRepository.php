@@ -30,7 +30,7 @@
         }
 
         /** All Users */
-        public function getAllUsers($perpage)
+        public function getAllUsers($perPage)
         {
             $users = $this->startConditions()
                     ->join('user_roles','user_roles.user_id', '=', 'users.id')
@@ -38,7 +38,8 @@
                     ->select('users.id','users.name','users.email','roles.name as role')
                     ->orderBy('users.id')
                     ->toBase()
-                    ->paginate($perpage);
+                    ->paginate($perPage);
+
             return $users;
         }
 
