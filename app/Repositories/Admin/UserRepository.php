@@ -15,13 +15,11 @@
     class UserRepository extends CoreRepository
     {
 
-
         public function __construct()
         {
             parent::__construct();
 
         }
-
 
         /**
          * @return mixed
@@ -30,7 +28,6 @@
         {
             return Model::class;
         }
-
 
         /** All Users */
         public function getAllUsers($perpage)
@@ -94,6 +91,5 @@
                 ->count();
             return $count;
         }
-
 
     }
