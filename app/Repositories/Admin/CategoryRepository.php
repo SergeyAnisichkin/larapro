@@ -100,7 +100,7 @@
         }
 
         /** Check unique name and its main category or not */
-        public function checkUniqueName($name,$parent_id)
+        public function checkUniqueName($name, $parent_id)
         {
             $name = $this->startConditions()
                 ->where('title','=', $name)

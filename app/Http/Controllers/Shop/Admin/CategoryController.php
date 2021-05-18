@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Shop\Admin;
 
 
-use App\Http\Requests\BlogCategoryUpdateRequest;
+use App\Http\Requests\AdminCategoryUpdateRequest;
 use App\Models\Admin\Category;
 use App\Repositories\Admin\CategoryRepository;
 use MetaTag;
@@ -69,11 +69,11 @@ class CategoryController extends AdminBaseController
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(BlogCategoryUpdateRequest $request)
+    public function store(AdminCategoryUpdateRequest $request)
     {
-        $name = $this->categoryRepository->checkUniqueName($request->title,$request->parent_id);
+        $name = $this->categoryRepository->checkUniqueName($request->title, $request->parent_id);
 
         if($name){
             return back()
