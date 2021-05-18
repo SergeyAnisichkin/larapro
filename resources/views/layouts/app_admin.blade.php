@@ -161,8 +161,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.index.index')}}">Список пользователей</a></li><!-- todo users.index -->
-                        <li><a href="{{route('shop.admin.index.index')}}">Добавить пользователя</a></li><!-- todo users.create -->
+                        <li><a href="{{route('shop.admin.users.index')}}">Список пользователей</a></li>
+                        <li><a href="{{route('shop.admin.users.create')}}">Добавить пользователя</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

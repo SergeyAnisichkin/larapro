@@ -7,8 +7,6 @@
     use App\Models\UserRole;
     use App\Repositories\Admin\MainRepository;
     use App\Repositories\Admin\UserRepository;
-    use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
     use MetaTag;
     use App\Models\Admin\User;
 
@@ -29,11 +27,12 @@
          */
         public function index()
         {
-            $perpage = 8;
+            $perPage = 8;
             $countUsers = MainRepository::getCountUsers();
-            $paginator = $this->userRepository->getAllUsers($perpage);
+            $paginator = $this->userRepository->getAllUsers($perPage);
 
             MetaTag::setTags(['title' => 'Список пользователей']);
+
             return view('shop.admin.user.index',
                 compact('countUsers', 'paginator'));
         }
