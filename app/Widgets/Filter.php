@@ -42,11 +42,8 @@
                 'groups' => $this->groups,
                 'attrs' => $this->attrs,
                 'filter' => $this->filter,
-
             ]);
         }
-
-
 
 
         protected function getGroups()
@@ -56,6 +53,7 @@
             foreach ($data as $key => $value){
                 $attrs[$value->id] = $value->title;
             }
+
             return $attrs;
         }
 
