@@ -15273,6 +15273,116 @@
      
 }
 
+    namespace Arrilot\Widgets { 
+            /**
+     * 
+     *
+     */ 
+        class Facade {
+                    /**
+         * Run widget without magic method.
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function run()
+        {
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->run();
+        }
+                    /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function encryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->encryptWidgetParams($params);
+        }
+                    /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function decryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->decryptWidgetParams($params);
+        }
+                    /**
+         * Get current widget name with optional custom widget namespace.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getWidgetNameWithCustomNamespace()
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\WidgetFactory $instance */
+                        return $instance->getWidgetNameWithCustomNamespace();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class AsyncFacade {
+                    /**
+         * Run widget without magic method.
+         *
+         * @return mixed 
+         * @static 
+         */ 
+        public static function run()
+        {
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->run();
+        }
+                    /**
+         * Encrypt widget params to be transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function encryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->encryptWidgetParams($params);
+        }
+                    /**
+         * Decrypt widget params that were transported via HTTP.
+         *
+         * @param string $params
+         * @return string 
+         * @static 
+         */ 
+        public static function decryptWidgetParams($params)
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->decryptWidgetParams($params);
+        }
+                    /**
+         * Get current widget name with optional custom widget namespace.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getWidgetNameWithCustomNamespace()
+        {            //Method inherited from \Arrilot\Widgets\Factories\AbstractWidgetFactory         
+                        /** @var \Arrilot\Widgets\Factories\AsyncWidgetFactory $instance */
+                        return $instance->getWidgetNameWithCustomNamespace();
+        }
+         
+    }
+     
+}
+
     namespace Barryvdh\Debugbar { 
             /**
      * 
@@ -19522,6 +19632,8 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class MetaTag extends \Fomvasss\LaravelMetaTags\Facade {}
+            class Widget extends \Arrilot\Widgets\Facade {}
+            class AsyncWidget extends \Arrilot\Widgets\AsyncFacade {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Menu extends \Lavary\Menu\Facade {}
