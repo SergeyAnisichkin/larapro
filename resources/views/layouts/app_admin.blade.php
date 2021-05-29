@@ -149,8 +149,8 @@
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.index.index')}}">Список товаров</a></li><!-- todo products.index -->
-                        <li><a href="{{route('shop.admin.index.index')}}">Добавить товар</a></li><!-- todo products.create -->
+                        <li><a href="{{route('shop.admin.products.index')}}">Список товаров</a></li>
+                        <li><a href="{{route('shop.admin.products.create')}}">Добавить товар</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-database"></i> <span>Кэширование</span></a></li><!-- todo admin.cache -->

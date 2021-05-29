@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Controllers\Blog\Admin;
+    namespace App\Http\Controllers\Shop\Admin;
 
 
     use App\Http\Requests\AdminProductsCreateRequest;
@@ -28,28 +28,30 @@
         /**
          * INDEX PAGE
          *
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Contracts\View\View
          */
         public function index()
         {
-            $perpage = 10;
-            $getAllProducts = $this->productRepository->getAllProducts($perpage);
+            $perPage = 10;
+            $getAllProducts = $this->productRepository->getAllProducts($perPage);
             $count = $this->productRepository->getCountProducts();
             MetaTag::setTags(['title' => 'Список товаров']);
-            return view('blog.admin.product.index', compact('getAllProducts', 'count'));
+
+            return view('shop.admin.product.index', compact('getAllProducts', 'count'));
         }
 
 
         /**
          * Show the form for creating a new resource.
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Contracts\View\View
          */
         public function create()
         {
             //\Session::flush();
             $item = new Category();
             MetaTag::setTags(['title' => 'Создание нового товара']);
-            return view('blog.admin.product.create', [
+
+            return view('shop.admin.product.create', [
                 'categories' => Category::with('children')->where('parent_id', '0')
                     ->get(),
                 'delimiter' => '-',
@@ -78,7 +80,7 @@
                 $this->productRepository->editRelatedProduct($id, $data);
                 $this->productRepository->saveGallery($id);
                 return redirect()
-                    ->route('blog.admin.products.create', [$product->id])
+                    ->route('shop.admin.products.create', [$product->id])
                     ->with(['success' => 'Успешно сохранено']);
             } else {
                 return back()
@@ -93,7 +95,7 @@
          * EDIT One Product
          *
          * @param  int $id
-         * @return \Illuminate\Http\Response
+         * @return \Illuminate\Contracts\View\View
          */
         public function edit($id)
         {
@@ -105,7 +107,8 @@
             $images = $this->productRepository->getGallery($id);
 
             MetaTag::setTags(['title' => "Редактирование товара № {$id}"]);
-            return view('blog.admin.product.edit', compact('product', 'images', 'filter', 'related_products', 'id'), [
+
+            return view('shop.admin.product.edit', compact('product', 'images', 'filter', 'related_products', 'id'), [
                 'categories' => Category::with('children')->where('parent_id', '0')
                     ->get(),
                 'delimiter' => '-',
@@ -118,7 +121,7 @@
          * Update Product
          * @param AdminProductsCreateRequest $request
          * @param $id
-         * @return $this
+         * @return \Illuminate\Http\RedirectResponse
          */
         public function update(AdminProductsCreateRequest $request, $id)
         {
@@ -141,7 +144,7 @@
                 $this->productRepository->editRelatedProduct($id, $data);
                 $this->productRepository->saveGallery($id);
                 return redirect()
-                    ->route('blog.admin.products.edit', [$product->id])
+                    ->route('shop.admin.products.edit', [$product->id])
                     ->with(['success' => 'Успешно сохранено']);
             } else {
                 return back()
@@ -158,7 +161,7 @@
         public function ajaxImage(Request $request)
         {
             if ($request->isMethod('get')) {
-                return view('blog.admin.product.include.image_single_edit');
+                return view('shop.admin.product.include.image_single_edit');
             } else {
                 $validator = \Validator::make($request->all(),
                     [
@@ -181,6 +184,7 @@
                 $wmax = BlogApp::get_instance()->getProperty('img_width');
                 $hmax = BlogApp::get_instance()->getProperty('img_height');
                 $this->productRepository->uploadImg($filename, $wmax, $hmax);
+
                 return $filename;
             }
         }
@@ -283,7 +287,7 @@
                 $st = $this->productRepository->deleteStatusOne($id);
                 if ($st) {
                     return redirect()
-                        ->route('blog.admin.products.index')
+                        ->route('shop.admin.products.index')
                         ->with(['success' => 'Успешно сохранено']);
                 } else {
                     return back()
@@ -302,7 +306,7 @@
                 $db = $this->productRepository->deleteFromDB($id);;
                 if ($db) {
                     return redirect()
-                        ->route('blog.admin.products.index')
+                        ->route('shop.admin.products.index')
                         ->with(['success' => 'Успешно удалено']);
                 } else {
                     return back()

@@ -84,7 +84,7 @@
                             <br>
                             <div class="form-group">
                                 <label for="related">Фильтры продукта</label>
-                {{ Widget::run('filter',['tpl' => 'widgets.filter','filter' => null, ])}}
+{{--                {{ Widget::run('filter',['tpl' => 'widgets.filter','filter' => null, ])}}--}}
 
                             </div>
 

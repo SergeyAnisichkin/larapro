@@ -10,10 +10,10 @@
         <li><a href="{{route('shop.admin.categories.index')}}"><i></i>{{$category}}</a></li>
     @endif
     @if (isset($user))
-        <li><a href="{{route('shop.admin.index.index')}}"><i></i>{{$user}}</a></li><!-- todo users.index -->
+        <li><a href="{{route('shop.admin.users.index')}}"><i></i>{{$user}}</a></li>
     @endif
     @if (isset($product))
-        <li><a href="{{route('shop.admin.index.index')}}"><i></i>{{$product}}</a></li><!-- todo products.index -->
+        <li><a href="{{route('shop.admin.products.index')}}"><i></i>{{$product}}</a></li>
     @endif
     @if (isset($group_filter))
         <li><a href="{{url('/admin/filter/group-filter')}}"><i></i>{{$group_filter}}</a></li>
