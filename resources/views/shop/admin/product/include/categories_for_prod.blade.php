@@ -14,7 +14,7 @@
             </option>
 
         @if (count($category_list->children) > 0)
-            @include('blog.admin.product.include.categories_for_prod',
+            @include('shop.admin.product.include.categories_for_prod',
             [
                 'categories' => $category_list->children,
                 'delimiter' => ' - ' . $delimiter,

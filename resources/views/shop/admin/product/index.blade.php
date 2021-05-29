@@ -5,7 +5,7 @@
 
 
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Список товаров @endslot
             @slot('parent') Главная @endslot
             @slot('active') Список товаров @endslot

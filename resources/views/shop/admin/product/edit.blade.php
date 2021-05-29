@@ -4,7 +4,7 @@
 
 
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Редактирование продукта @endslot
             @slot('parent') Главная @endslot
             @slot('product') Список продуктов @endslot
@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box">
-                    <form method="POST"  action="{{route('blog.admin.products.update', $product->id)}}" data-toggle="validator" id="add">
+                    <form method="POST"  action="{{route('shop.admin.products.update', $product->id)}}" data-toggle="validator" id="add">
                         @method('PATCH')
                         @csrf
                         <div class="box-body">
@@ -33,7 +33,7 @@
                                 <select name="parent_id" id="parent_id" class="form-control" required>
                                     <option disabled>-- выберите категорию --</option>
 
-                                    @include('blog.admin.product.include.categories_for_prod',['categories' => $categories])
+                                    @include('shop.admin.product.include.categories_for_prod',['categories' => $categories])
 
                                 </select>
                             </div>
@@ -104,11 +104,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-4">
-                                    @include('blog.admin.product.include.image_single_edit',['product' => $product])
+                                    @include('shop.admin.product.include.image_single_edit',['product' => $product])
                                 </div>
 
                                 <div class="col-md-8" >
-                                    @include('blog.admin.product.include.image_gallery_edit',['images' => $images])
+                                    @include('shop.admin.product.include.image_gallery_edit',['images' => $images])
                                 </div>
                             </div>
 
