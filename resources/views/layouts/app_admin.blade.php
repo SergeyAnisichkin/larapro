@@ -251,7 +251,7 @@
 </script>
 <!-- jQuery 3 -->
 <script src="{{asset('adminlte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-
+<!-- AjaxUpload -->
 <script src="{{asset('js/ajaxupload.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -275,6 +275,7 @@
 {{--@include('blog.admin.product.include.script_img')--}}
 {{--@include('blog.admin.product.include.script_gallery')--}}
 @include('shop.admin.product.include.script_img')
+@include('shop.admin.product.include.script_gallery')
 @include('shop.admin.product.include.script_related_prod')
 
 

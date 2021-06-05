@@ -212,7 +212,7 @@
             $uploadfile = $uploaddir . $new_name;
             \Session::push('gallery', $new_name);
             if (@move_uploaded_file($_FILES[$name]['tmp_name'], $uploadfile)) {
-                self::resize($uploadfile, $uploadfile, $wmax, $hmax, $ext);
+                //self::resize($uploadfile, $uploadfile, $wmax, $hmax, $ext);//todo error loading image
                 $res = array("file" => $new_name);
                 echo json_encode($res);
             }

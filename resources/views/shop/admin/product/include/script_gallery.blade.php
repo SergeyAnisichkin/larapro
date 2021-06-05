@@ -33,8 +33,12 @@
                     onComplete: function (file, response) {
                         setTimeout(function () {
                             buttonMulti.closest('.file-upload').find('.overlay').css({'display': 'none'});
-
+                            var pos = response.indexOf('<');
+                            if (pos != -1) {
+                                response = response.slice(0, pos);
+                            }
                             response = JSON.parse(response);
+
                             $('.' + buttonMulti.data('name')).append('<img src="{{asset('/uploads/gallery/')}}/'+ response.file+'" style="max-height: 150px;">');
                         }, 1000);
                     }
