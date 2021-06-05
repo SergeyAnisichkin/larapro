@@ -274,6 +274,7 @@
 <!-- todo  -->
 {{--@include('blog.admin.product.include.script_img')--}}
 {{--@include('blog.admin.product.include.script_gallery')--}}
+@include('shop.admin.product.include.script_img')
 @include('shop.admin.product.include.script_related_prod')
 
 
