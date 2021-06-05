@@ -50,6 +50,7 @@ Route::group(['middleware' => ['status','auth']], function () {
         Route::resource('users','UserController')
             ->names('shop.admin.users');
 
+        Route::get('/products/related','ProductController@related');
         Route::resource('products','ProductController')
             ->names('shop.admin.products');
 
