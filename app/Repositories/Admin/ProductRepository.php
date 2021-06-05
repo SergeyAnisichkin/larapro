@@ -226,7 +226,7 @@
             $ext = strtolower(preg_replace("#.+\.([a-z]+)$#i", "$1", $name));
             $uploadfile = $uploaddir . $name;
             \Session::put('single', $name);
-            self::resize($uploadfile, $uploadfile, $wmax, $hmax, $ext);
+            //self::resize($uploadfile, $uploadfile, $wmax, $hmax, $ext); //todo error loading image
 
         }
 
