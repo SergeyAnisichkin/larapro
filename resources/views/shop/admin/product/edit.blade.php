@@ -95,12 +95,12 @@
                             <br>
                             <div class="form-group">
                                 <label for="related">Фильтры продукта</label>
-{{--                        {{ Widget::run('filter',--}}
-{{--                            [--}}
-{{--                            'tpl' => 'widgets.filter',--}}
-{{--                            'filter' => $filter,--}}
-{{--                            ])--}}
-{{--                        }}--}}
+                        {{ Widget::run('filter',
+                            [
+                            'tpl' => 'widgets.filter',
+                            'filter' => $filter,
+                            ])
+                        }}
                             </div>
                             <div class="form-group">
                                 <div class="col-md-4">
