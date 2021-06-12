@@ -270,7 +270,7 @@
                 $st = $this->productRepository->returnStatusOne($id);
                 if ($st) {
                     return redirect()
-                        ->route('blog.admin.products.index')
+                        ->route('shop.admin.products.index')
                         ->with(['success' => 'Успешно сохранено']);
                 } else {
                     return back()
@@ -303,7 +303,7 @@
         {
             if ($id) {
                 $gal = $this->productRepository->deleteImgGalleryFromPath($id);
-                $db = $this->productRepository->deleteFromDB($id);;
+                $db = $this->productRepository->deleteFromDB($id);
                 if ($db) {
                     return redirect()
                         ->route('shop.admin.products.index')

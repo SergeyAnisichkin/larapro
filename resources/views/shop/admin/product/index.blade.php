@@ -47,11 +47,11 @@
                                     @if ($product->status == 0)
                                         <a class="delete" href="{{route('shop.admin.products.returnstatus',$product->id)}}" title="Перевести status = On"><i class="fa fa-fw fa-refresh"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     @else
-                                    <!-- todo deletestatus --><a class="delete" href="{{route('shop.admin.products.edit',$product->id)}}" title="Перевести status = Off"><i class="fa fa-fw fa-close"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a class="delete" href="{{route('shop.admin.products.deletestatus',$product->id)}}" title="Перевести status = Off"><i class="fa fa-fw fa-close"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                     @endif
 
                                     @if ($product)
-                                    <!-- todo deleteproduct --> <a class="delete" href="{{route('shop.admin.products.edit', $product->id)}}" title="Удалить из БД"><i class="fa fa-fw fa-close text-danger"></i></a>
+                                        <a class="delete" href="{{route('shop.admin.products.deleteproduct', $product->id)}}" title="Удалить из БД"><i class="fa fa-fw fa-close text-danger"></i></a>
                                     @endif
 
                                 </td>
