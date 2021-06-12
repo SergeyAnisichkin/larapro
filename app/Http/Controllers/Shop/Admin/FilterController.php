@@ -2,8 +2,8 @@
 
     namespace App\Http\Controllers\Shop\Admin;
 
-    use App\Http\Requests\BlogAttrsFilterAddRequest;
-    use App\Http\Requests\BlogGroupFilterAddRequest;
+    use App\Http\Requests\AdminAttrsFilterAddRequest;
+    use App\Http\Requests\AdminGroupFilterAddRequest;
     use App\Models\Admin\AttributeGroup;
     use App\Models\Admin\AttributeValue;
     use App\Repositories\Admin\FilterAttrsRepository;
@@ -33,7 +33,7 @@
             $attrs_group = $this->filterGroupRepository->getAllGroupsFilter();
 
             MetaTag::setTags(['title' => 'Группы фильтров']);
-            return view('blog.admin.filter.attribute-group', compact('attrs_group'));
+            return view('shop.admin.filter.attribute-group', compact('attrs_group'));
         }
 
 
@@ -61,10 +61,10 @@
 
         /** Add Group for Filter
          *  table->attribute_group
-         * @param BlogGroupFilterAddRequest $request
-         * @return array
+         * @param AdminGroupFilterAddRequest $request
+         * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
          */
-        public function groupAdd(BlogGroupFilterAddRequest $request)
+        public function groupAdd(AdminGroupFilterAddRequest $request)
         {
             if ($request->isMethod('post')) {
                 $data = $request->input();
@@ -83,7 +83,7 @@
             } else {
                 if ($request->isMethod('get')) {
                     MetaTag::setTags(['title' => 'Новая группа фильтров']);
-                    return view('blog.admin.filter.group-add-group');
+                    return view('shop.admin.filter.group-add-group');
                 }
             }
 
@@ -99,15 +99,15 @@
             $count = $this->filterGroupRepository->getCountGroupFilter();
 
             MetaTag::setTags(['title' => 'Фильтры']);
-            return view('blog.admin.filter.attribute', compact('attrs', 'count'));
+            return view('shop.admin.filter.attribute', compact('attrs', 'count'));
         }
 
 
         /** Add attribute for filter
-         * @param BlogAttrsFilterAddRequest $request
-         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         * @param AdminAttrsFilterAddRequest $request
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\Illuminate\Http\RedirectResponse
          */
-        public function attributeAdd(BlogAttrsFilterAddRequest $request)
+        public function attributeAdd(AdminAttrsFilterAddRequest $request)
         {
             if ($request->isMethod('post')) {
 
@@ -135,7 +135,7 @@
                 if ($request->isMethod('get')) {
                     $group = $this->filterGroupRepository->getAllGroupsFilter();
                     MetaTag::setTags(['title' => 'Новый атрибут для фильтра']);
-                    return view('blog.admin.filter.attrs-add', compact('group'));
+                    return view('shop.admin.filter.attrs-add', compact('group'));
                 }
             }
         }
@@ -159,11 +159,11 @@
 
 
         /** Edit Group Filter
-         * @param BlogGroupFilterAddRequest $request
+         * @param AdminGroupFilterAddRequest $request
          * @param $id
-         * @return \Illuminate\Http\RedirectResponse
+         * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
          */
-        public function groupEdit(BlogGroupFilterAddRequest $request, $id)
+        public function groupEdit(AdminGroupFilterAddRequest $request, $id)
         {
             if (empty($id)) {
                 return back()->withErrors(['msg' => "Запись [{$id}] не найдена!"]);
@@ -185,18 +185,18 @@
                 if ($request->isMethod('get')) {
                     $group = $this->filterGroupRepository->getInfoProduct($id);
                     MetaTag::setTags(['title' => 'Редактирование группы']);
-                    return view('blog.admin.filter.group-edit', compact('group'));
+                    return view('shop.admin.filter.group-edit', compact('group'));
                 }
             }
         }
 
 
         /** Edit Attribute Filter
-         * @param BlogAttrsFilterAddRequest $request
+         * @param AdminAttrsFilterAddRequest $request
          * @param $id
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
          */
-        public function attrEdit(BlogAttrsFilterAddRequest $request, $id)
+        public function attrEdit(AdminAttrsFilterAddRequest $request, $id)
         {
             if (empty($id)) {
                 return back()->withErrors(['msg' => "Запись [{$id}] не найдена!"]);
@@ -222,7 +222,7 @@
                     $atrr = $this->filterAttrsRepository->getInfoProduct($id);
                     $group = $this->filterGroupRepository->getAllGroupsFilter();
                     MetaTag::setTags(['title' => 'Редактирование фильтра']);
-                    return view('blog.admin.filter.attrs-edit', compact('group','atrr'));
+                    return view('shop.admin.filter.attrs-edit', compact('group','atrr'));
                 }
             }
         }
