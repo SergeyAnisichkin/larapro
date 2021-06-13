@@ -76,6 +76,11 @@ Route::group(['middleware' => ['status','auth']], function () {
         Route::get('/filter/attr-delete/{id}', 'FilterController@attrDelete');
         Route::match(['get','post'],'/filter/attr-edit/{id}','FilterController@attrEdit');
 
+        Route::get('/currency/index','CurrencyController@index');
+        Route::match(['get','post'],'/currency/add','CurrencyController@add');
+        Route::match(['get','post'],'/currency/edit/{id}','CurrencyController@edit');
+        Route::get('/currency/delete/{id}','CurrencyController@delete');
+
         Route::resource('products','ProductController')
             ->names('shop.admin.products');
 
