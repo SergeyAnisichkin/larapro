@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        @component('blog.admin.components.breadcrumb')
+        @component('shop.admin.components.breadcrumb')
             @slot('title') Редактирование валюты @endslot
             @slot('parent') Главная @endslot
             @slot('currency') Список валют @endslot
