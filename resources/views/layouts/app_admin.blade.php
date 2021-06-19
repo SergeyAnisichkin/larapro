@@ -53,11 +53,11 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{{route('shop.admin.index.index')}}" class="logo">
+        <a href="{{route('luckypin.admin.index.index')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b> Panel</span>
+            <span class="logo-lg"><b>LuckyPin</b> AP</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -86,7 +86,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{route('shop.admin.users.edit', Auth::user()->id)}}" class="btn btn-default btn-flat">Профиль</a><!-- todo origin-->
+                                    <a href="{{route('luckypin.admin.users.edit', Auth::user()->id)}}" class="btn btn-default btn-flat">Профиль</a><!-- todo origin-->
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -125,66 +125,40 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Меню</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="/"><i class="fa fa-home"></i> <span>В магазин</span></a></li>
-                <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
-                <li><a href="{{route('shop.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li>
+                <li><a href="/"><i class="fa fa-home"></i> <span>На главную сервиса</span></a></li>
+                <li><a href="{{route('luckypin.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
 
-
-
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-navicon"></i> <span>Категории</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.categories.index')}}">Список категорий</a></li>
-                        <li><a href="{{route('shop.admin.categories.create')}}">Добавить категорию</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-cubes"></i> <span>Товары</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.products.index')}}">Список товаров</a></li>
-                        <li><a href="{{route('shop.admin.products.create')}}">Добавить товар</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{route('shop.admin.index.index')}}"><i class="fa fa-database"></i> <span>Кэширование</span></a></li><!-- todo admin.cache -->
                 <li class="treeview">
                     <a href="#"><i class="fa fa-users"></i> <span>Пользователи</span>
                         <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('shop.admin.users.index')}}">Список пользователей</a></li>
-                        <li><a href="{{route('shop.admin.users.create')}}">Добавить пользователя</a></li>
+                        <li><a href="{{route('luckypin.admin.users.index')}}">Список пользователей</a></li>
+                        <li><a href="{{route('luckypin.admin.users.create')}}">Добавить пользователя</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-usd"></i> <span>Валюты</span>
+                    <a href="#"><i class="fa fa-usd"></i> <span>Партнеры</span>
                         <span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('/admin/currency/index')}}">Список валют</a></li>
-                        <li><a href="{{url('/admin/currency/add')}}">Добавить валюту</a></li>
+                        <li><a href="{{url('/admin/partner/index')}}">Список партнеров</a></li>
+                        <li><a href="{{url('/admin/partner/add')}}">Добавить партнера</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-filter"></i> <span>Фильтры</span>
+                    <a href="#"><i class="fa fa-filter"></i> <span>Постматы</span>
                         <span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('admin/filter/group-filter')}}">Группы фильтров</a></li>
-                        <li><a href="{{url('admin/filter/attributes-filter')}}">Фильтры</a></li>
+                        <li><a href="{{url('admin/postamat/index')}}">Список постматов</a></li>
+                        <li><a href="{{url('admin/postamat/add')}}">Добавить постамат</a></li>
                     </ul>
                 </li>
             </ul>
@@ -193,7 +167,7 @@
 
             <form action="{{url('/admin/search/result')}}" method="get" autocomplete="off"  style="position: absolute;">
                 <div class="input-group">
-                    <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
+                    <input id="search" name="search" type="text" class="form-control" placeholder="Поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
                     <span class="input-group-btn">
                         <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i class="fa fa-search"></i></button>
                     </span>
@@ -212,7 +186,7 @@
 
         <main id="app">
 
-            @include('shop.admin.components.result_messages')
+            @include('luckypin.admin.components.result_messages')
             @yield('content')
 
         </main>
@@ -222,7 +196,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.4.0
         </div>
-        <strong>Copyright &copy; 2021.</strong> All rights
+        <strong>Copyright Luckypin &copy; 2021.</strong> All rights
         reserved.
     </footer>
 
@@ -272,11 +246,6 @@
 
 <script src="{{asset('js/my.js')}}"></script>
 <!-- todo  -->
-{{--@include('blog.admin.product.include.script_img')--}}
-{{--@include('blog.admin.product.include.script_gallery')--}}
-@include('shop.admin.product.include.script_img')
-@include('shop.admin.product.include.script_gallery')
-@include('shop.admin.product.include.script_related_prod')
 
 
 </body>
