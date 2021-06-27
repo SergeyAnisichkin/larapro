@@ -68,6 +68,7 @@
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
         <div class="top-right links">
+            <strong><a href="{{ url('/shop') }}" style="color: #0b3e6f; text-decoration: none">Магазин</a></strong>
             @auth
 
                 @if(Auth::user()->isDisabled())
