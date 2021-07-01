@@ -1,41 +1,64 @@
-@extends('layouts.master')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('title', __('main.product'))
+    <title>Интернет Магазин: Товар</title>
 
-@section('content')
-    <h1>{{ $skus->product->__('name') }}</h1>
-    <h2>{{ $skus->product->category->name }}</h2>
-    <p>@lang('product.price'): <b>{{ $skus->price }} {{ $currencySymbol }}</b></p>
-
-    @isset($skus->product->properties)
-        @foreach ($skus->propertyOptions as $propertyOption)
-            <h4>{{ $propertyOption->property->__('name') }}: {{ $propertyOption->__('name') }}</h4>
-        @endforeach
-    @endisset
-
-    <img src="{{ Storage::url($skus->product->image) }}">
-    <p>{{ $skus->product->__('description') }}</p>
-
-    @if($skus->isAvailable())
-        <form action="{{ route('basket-add', $skus->product) }}" method="POST">
-            <button type="submit" class="btn btn-success" role="button">@lang('product.add_to_cart')</button>
-
-            @csrf
-        </form>
-    @else
-
-        <span>@lang('product.not_available')</span>
-        <br>
-        <span>@lang('product.tell_me'):</span>
-        <div class="warning">
-            @if($errors->get('email'))
-                {!! $errors->get('email')[0] !!}
-            @endif
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/starter-template.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://internet-shop.tmweb.ru">Интернет Магазин</a>
         </div>
-        <form method="POST" action="{{ route('subscription', $skus) }}">
-            @csrf
-            <input type="text" name="email"></input>
-            <button type="submit">@lang('product.subscribe')</button>
-        </form>
-    @endif
-@endsection
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="http://internet-shop.tmweb.ru">Все товары</a></li>
+                <li ><a href="http://internet-shop.tmweb.ru/categories">Категории</a>
+                </li>
+                <li ><a href="http://internet-shop.tmweb.ru/basket">В корзину</a></li>
+                <li><a href="http://internet-shop.tmweb.ru/reset">Сбросить проект в начальное состояние</a></li>
+                <li><a href="http://internet-shop.tmweb.ru/locale/en">en</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">₽<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://internet-shop.tmweb.ru/currency/RUB">₽</a></li>
+                        <li><a href="http://internet-shop.tmweb.ru/currency/USD">$</a></li>
+                        <li><a href="http://internet-shop.tmweb.ru/currency/EUR">€</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://internet-shop.tmweb.ru/login">Войти</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="starter-template">
+        <h1>iPhone X 64GB</h1>
+        <h2>Мобильные телефоны</h2>
+        <p>Цена: <b>71990 ₽</b></p>
+        <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
+        <p>Отличный продвинутый телефон с памятью на 64 gb</p>
+
+        <form action="http://internet-shop.tmweb.ru/basket/add/1" method="POST">
+            <button type="submit" class="btn btn-success" role="button">Добавить в корзину</button>
+
+            <input type="hidden" name="_token" value="s7CPh1VooZQIoi4fC5JTVzn9a6vmdPpQJvkneaxW">        </form>
+    </div>
+</div>
+</body>
+</html>
