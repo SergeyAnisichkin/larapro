@@ -8,10 +8,10 @@
     <title>Интернет Магазин: Главная</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/starter-template.css" rel="stylesheet">
+    <script src="/js/shop/jquery.min.js"></script>
+    <script src="/js/shop/bootstrap.min.js"></script>
+    <link href="/css/shop/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/shop/starter-template.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
