@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 $visitorNamespace = "App\Http\Controllers\Shop\Visitor";
 Route::get('/shop', $visitorNamespace . '\MainController@index');
+Route::get('/shop/categories', $visitorNamespace . '\MainController@categories');
+Route::get('/shop/{category}', $visitorNamespace . '\MainController@category');
+Route::get('/shop/mobiles/{product?}', $visitorNamespace . '\MainController@product');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

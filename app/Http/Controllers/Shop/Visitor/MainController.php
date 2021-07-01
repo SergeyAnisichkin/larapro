@@ -22,6 +22,24 @@ class MainController extends Controller
         return view('shop.visitor.index');
     }
 
+    public function categories()
+    {
+        dd('categories');
+        return view('shop.visitor.categories');
+    }
+
+    public function category($category)
+    {
+        dd($category);
+        return view('shop.visitor.category');
+    }
+
+    public function product($product = null)
+    {
+        dd($product);
+        return view('shop.visitor.product', ['product' => $product]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
