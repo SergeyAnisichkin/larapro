@@ -1,17 +1,7 @@
 <?php
 
+use App\Http\Controllers\Shop\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-| http://internet-shop.tmweb.ru/
-*/
 
 
 Route::get('/', function () {
@@ -54,7 +44,7 @@ Route::group(['middleware' => ['status','auth']], function () {
         Route::resource('categories', 'CategoryController')
             ->names('shop.admin.categories');
 
-        Route::resource('users','UserController')
+        Route::resource('users', UserController::class)
             ->names('shop.admin.users');
 
         Route::get('/products/related','ProductController@related');
