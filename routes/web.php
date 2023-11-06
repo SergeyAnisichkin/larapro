@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Shop\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ Route::get('/shop/mobiles/{product?}', $visitorNamespace . '\MainController@prod
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/sign-up', [AuthController::class, 'getSignUpPage'])->name('auth.sign_up');
 
 /** Admin side ------------ */
 Route::group(['middleware' => ['status','auth']], function () {

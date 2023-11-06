@@ -99,11 +99,15 @@
                     <a href="{{ route('login') }}" style="color: #0b3e6f; text-decoration: none">Войти</a>
                 </strong>
 
-                @if (Route::has('register'))
+                @if (false && Route::has('register'))
                     <strong>
                         <a href="{{ route('register') }}" style="color: #0b3e6f; text-decoration: none">Регистрация</a>
                     </strong>
                 @endif
+
+                <strong>
+                    <a href="{{ route('auth.sign_up') }}" style="color: #0b3e6f; text-decoration: none">{{ __('views.auth.sign_up') }}</a>
+                </strong>
             @endauth
         </div>
     @endif
