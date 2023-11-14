@@ -18,6 +18,7 @@ Route::get('/shop/mobiles/{product?}', $visitorNamespace . '\MainController@prod
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/sign-up', [AuthController::class, 'getSignUpPage'])->name('auth.sign_up');
+Route::post('/sign-up-user', [AuthController::class, 'signUpUser'])->name('auth.sign_up_user');
 
 /** Admin side ------------ */
 Route::group(['middleware' => ['status','auth']], function () {

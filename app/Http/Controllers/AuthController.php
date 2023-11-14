@@ -9,6 +9,12 @@ class AuthController extends Controller
 {
     public function getSignUpPage(): View
     {
-        return view('auth.register');
+        return view('auth-sign.sign-up');
+    }
+
+    public function signUpUser(Request $request): View
+    {
+        dd($request);
+        return view('auth-sign.sign-up');
     }
 }
