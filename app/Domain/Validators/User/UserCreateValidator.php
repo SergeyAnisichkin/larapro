@@ -6,10 +6,15 @@ namespace App\Domain\Validators\User;
 
 use App\Domain\Dto\User\UserSignUpDto;
 use App\Domain\Enums\User\UserAttribute;
+use App\Domain\Repositories\Main\User\UserQueryRepository;
 
 class UserCreateValidator
 {
     private array $messages = [];
+
+    public function __construct(private readonly UserQueryRepository $userQueryRepository)
+    {
+    }
 
     public function getErrorMessage(): string
     {
@@ -49,6 +54,14 @@ class UserCreateValidator
 
         if (! $isValidEmail) {
             $this->messages[] = __('validation.user.email_is_invalid');
+
+            return;
+        }
+
+        if ($this->userQueryRepository->isExistingEmail($userDto->email)) {
+            $this->messages[] = __('validation.user.email_already_exists');
+
+            return;
         }
 
         $emailLength = strlen($userDto->email);
