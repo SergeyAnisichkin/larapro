@@ -149,4 +149,10 @@ return [
 
     'attributes' => [],
 
+    'user' => [
+        'name_length' => 'The Name must be between 3 and 120 characters.',
+        'email_length' => 'The Email must be between 6 and 120 characters.',
+        'password_length' => 'The Password must be between 8 and 120 characters.',
+        'email_is_invalid' => 'The Email is invalid.',
+    ],
 ];
