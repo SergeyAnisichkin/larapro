@@ -12,6 +12,7 @@ final class UserSignUpDto
         public readonly string $name,
         public readonly string $email,
         public readonly string $password,
+        public readonly string $passwordConfirm,
     ) {
     }
 
@@ -21,6 +22,7 @@ final class UserSignUpDto
             $data[UserAttribute::NAME->value] ?? '',
                 $data[UserAttribute::EMAIL->value] ?? '',
                 $data[UserAttribute::PASSWORD->value] ?? '',
+                $data[UserAttribute::PASSWORD_CONFIRMATION->value] ?? '',
         );
     }
 }

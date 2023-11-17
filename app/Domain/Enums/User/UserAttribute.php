@@ -9,6 +9,7 @@ enum UserAttribute: string
     case NAME = 'name';
     case EMAIL = 'email';
     case PASSWORD = 'password';
+    case PASSWORD_CONFIRMATION = 'password_confirmation';
 
     public function getMinLength(): int
     {
@@ -16,6 +17,7 @@ enum UserAttribute: string
             self::NAME => 3,
             self::EMAIL => 6,
             self::PASSWORD => 8,
+            default => 3,
         };
     }
 

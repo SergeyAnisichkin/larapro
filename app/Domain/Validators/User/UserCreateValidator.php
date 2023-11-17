@@ -37,13 +37,10 @@ class UserCreateValidator
     {
         $nameLength = strlen($userDto->name);
 
-        if ($nameLength < UserAttribute::NAME->getMinLength()) {
-            $this->messages[] = __('validation.user.name_length');
-
-            return;
-        }
-
-        if ($nameLength > UserAttribute::NAME->getMaxLength()) {
+        if (
+            $nameLength < UserAttribute::NAME->getMinLength()
+            || $nameLength > UserAttribute::NAME->getMaxLength()
+        ) {
             $this->messages[] = __('validation.user.name_length');
         }
     }
@@ -66,13 +63,10 @@ class UserCreateValidator
 
         $emailLength = strlen($userDto->email);
 
-        if ($emailLength < UserAttribute::EMAIL->getMinLength()) {
-            $this->messages[] = __('validation.user.email_length');
-
-            return;
-        }
-
-        if ($emailLength > UserAttribute::EMAIL->getMaxLength()) {
+        if (
+            $emailLength < UserAttribute::EMAIL->getMinLength()
+            || $emailLength > UserAttribute::EMAIL->getMaxLength()
+        ) {
             $this->messages[] = __('validation.user.email_length');
         }
     }
@@ -81,13 +75,14 @@ class UserCreateValidator
     {
         $passwordLength = strlen($userDto->password);
 
-        if ($passwordLength < UserAttribute::PASSWORD->getMinLength()) {
-            $this->messages[] = __('validation.user.password_length');
-
-            return;
+        if ($userDto->password !== $userDto->passwordConfirm) {
+            $this->messages[] = __('validation.user.password_confirm');
         }
 
-        if ($passwordLength > UserAttribute::PASSWORD->getMaxLength()) {
+        if (
+            $passwordLength < UserAttribute::PASSWORD->getMinLength()
+            || $passwordLength > UserAttribute::PASSWORD->getMaxLength()
+        ) {
             $this->messages[] = __('validation.user.password_length');
         }
     }
