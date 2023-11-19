@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Domain\Dto\User\UserSignUpDto;
+use App\Domain\Repositories\Main\User\UserQueryRepository;
+use App\Domain\Services\Common\TextMessageService;
 use App\Domain\Validators\User\UserCreateValidator;
-use PHPUnit\Framework\TestCase;
+use Mockery;
+use Tests\AbstractUnitTestCase;
 
-class UserCreateValidatorTest extends TestCase
+class UserCreateValidatorTest extends AbstractUnitTestCase
 {
     private UserCreateValidator $validator;
 
@@ -16,13 +19,26 @@ class UserCreateValidatorTest extends TestCase
     {
         parent::setUp();
 
-        $this->validator = app(UserCreateValidator::class);
+        $queryMock = Mockery::mock(UserQueryRepository::class)
+            ->shouldReceive('isExistingEmail')
+            ->withAnyArgs()
+            ->andReturnFalse()
+            ->getMock();
+        $textMock = Mockery::mock(TextMessageService::class)
+            ->shouldReceive('getText')
+            ->withAnyArgs()
+            ->andReturn('test')
+            ->getMock();
+
+        $this->validator = new UserCreateValidator($queryMock, $textMock);
+
+
     }
 
     /**
      * @dataProvider userDataProvider
      */
-    public function testSuccessValidate(array $userData, bool $isSuccessValidate): void
+    public function testUserDtoValidate(array $userData, bool $isSuccessValidate): void
     {
         $this->assertEmpty($this->validator->getErrorMessage());
 

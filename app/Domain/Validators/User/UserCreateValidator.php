@@ -7,13 +7,16 @@ namespace App\Domain\Validators\User;
 use App\Domain\Dto\User\UserSignUpDto;
 use App\Domain\Enums\User\UserAttribute;
 use App\Domain\Repositories\Main\User\UserQueryRepository;
+use App\Domain\Services\Common\TextMessageService;
 
-class UserCreateValidator
+final class UserCreateValidator
 {
     private array $messages = [];
 
-    public function __construct(private readonly UserQueryRepository $userQueryRepository)
-    {
+    public function __construct(
+        private readonly UserQueryRepository $userQueryRepository,
+        private readonly TextMessageService $textService,
+    ) {
     }
 
     public function getErrorMessage(): string
@@ -41,7 +44,7 @@ class UserCreateValidator
             $nameLength < UserAttribute::NAME->getMinLength()
             || $nameLength > UserAttribute::NAME->getMaxLength()
         ) {
-            $this->messages[] = __('validation.user.name_length');
+            $this->messages[] = $this->textService->getText('validation.user.name_length');
         }
     }
 
@@ -50,13 +53,13 @@ class UserCreateValidator
         $isValidEmail = (bool)filter_var($userDto->email, FILTER_VALIDATE_EMAIL);
 
         if (! $isValidEmail) {
-            $this->messages[] = __('validation.user.email_is_invalid');
+            $this->messages[] = $this->textService->getText('validation.user.email_is_invalid');
 
             return;
         }
 
         if ($this->userQueryRepository->isExistingEmail($userDto->email)) {
-            $this->messages[] = __('validation.user.email_already_exists');
+            $this->messages[] = $this->textService->getText('validation.user.email_already_exists');
 
             return;
         }
@@ -67,7 +70,7 @@ class UserCreateValidator
             $emailLength < UserAttribute::EMAIL->getMinLength()
             || $emailLength > UserAttribute::EMAIL->getMaxLength()
         ) {
-            $this->messages[] = __('validation.user.email_length');
+            $this->messages[] = $this->textService->getText('validation.user.email_length');
         }
     }
 
@@ -76,14 +79,14 @@ class UserCreateValidator
         $passwordLength = strlen($userDto->password);
 
         if ($userDto->password !== $userDto->passwordConfirm) {
-            $this->messages[] = __('validation.user.password_confirm');
+            $this->messages[] = $this->textService->getText('validation.user.password_confirm');
         }
 
         if (
             $passwordLength < UserAttribute::PASSWORD->getMinLength()
             || $passwordLength > UserAttribute::PASSWORD->getMaxLength()
         ) {
-            $this->messages[] = __('validation.user.password_length');
+            $this->messages[] = $this->textService->getText('validation.user.password_length');
         }
     }
 }
