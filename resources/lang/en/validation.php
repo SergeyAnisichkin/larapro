@@ -156,5 +156,6 @@ return [
         'password_confirm' => 'The Password Confirm is invalid. ',
         'email_is_invalid' => 'The Email is invalid. ',
         'email_already_exists' => 'Email already exists. ',
+        'invalid_uuid' => 'The UUID is invalid. ',
     ],
 ];

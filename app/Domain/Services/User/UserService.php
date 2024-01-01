@@ -12,12 +12,13 @@ final class UserService
 {
     public function __construct(
         private readonly UserCommandRepository $userCommandRepository,
+        private readonly UserFactory $userFactory,
     ) {
     }
 
     public function create(UserSignUpDto $userDto): int
     {
-        $user = UserFactory::getFromSignUpDto($userDto);
+        $user = $this->userFactory->getFromSignUpDto($userDto);
 
         return $this->userCommandRepository->create($user);
     }

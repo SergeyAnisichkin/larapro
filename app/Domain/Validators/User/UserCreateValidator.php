@@ -8,6 +8,7 @@ use App\Domain\Dto\User\UserSignUpDto;
 use App\Domain\Enums\User\UserAttribute;
 use App\Domain\Repositories\Main\User\UserQueryRepository;
 use App\Domain\Services\Common\TextMessageService;
+use App\Domain\Services\Common\UuidService;
 
 final class UserCreateValidator
 {
@@ -16,6 +17,7 @@ final class UserCreateValidator
     public function __construct(
         private readonly UserQueryRepository $userQueryRepository,
         private readonly TextMessageService $textService,
+        private readonly UuidService $uuidService,
     ) {
     }
 
@@ -32,6 +34,7 @@ final class UserCreateValidator
         $this->validateName($userDto);
         $this->validateEmail($userDto);
         $this->validatePassword($userDto);
+        $this->validateUuid($userDto);
 
         return empty($this->messages);
     }
@@ -87,6 +90,16 @@ final class UserCreateValidator
             || $passwordLength > UserAttribute::PASSWORD->getMaxLength()
         ) {
             $this->messages[] = $this->textService->getText('validation.user.password_length');
+        }
+    }
+
+    private function validateUuid(UserSignUpDto $userDto): void
+    {
+        if (
+            ! empty($userDto->uuid)
+            && ! $this->uuidService->isUuid($userDto->uuid)
+        ) {
+            $this->messages[] = $this->textService->getText('validation.user.invalid_uuid');
         }
     }
 }

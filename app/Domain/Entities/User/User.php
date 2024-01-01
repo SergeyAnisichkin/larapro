@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Entities\User;
 
 use App\Domain\Enums\User\UserRole;
+use App\Domain\Enums\User\UserState;
 
 class User
 {
@@ -12,9 +13,11 @@ class User
     private string $password;
     private array $roles;
     private int $id;
+    private UserState $state;
 
     public function __construct(
         private readonly string $email,
+        private readonly string $uuid,
     ) {
     }
 
@@ -61,5 +64,20 @@ class User
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    public function setState(UserState $state): void
+    {
+        $this->state = $state;
+    }
+
+    public function getState(): UserState
+    {
+        return $this->state;
     }
 }

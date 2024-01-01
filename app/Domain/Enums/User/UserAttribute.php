@@ -10,11 +10,12 @@ enum UserAttribute: string
     case EMAIL = 'email';
     case PASSWORD = 'password';
     case PASSWORD_CONFIRMATION = 'password_confirmation';
+    case UUID = 'uuid';
+    case STATE = 'state';
 
     public function getMinLength(): int
     {
         return match ($this) {
-            self::NAME => 3,
             self::EMAIL => 6,
             self::PASSWORD => 8,
             default => 3,
