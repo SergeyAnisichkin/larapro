@@ -16,34 +16,34 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
 {
     private TextMessageService $messageService;
     private UserCreateValidator $validator;
+    private UuidService $uuidService;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $queryMock = Mockery::mock(UserQueryRepository::class)
-            ->shouldReceive('isExistingEmail')
+        $userQueryMock = Mockery::mock(UserQueryRepository::class)
+            ->shouldReceive('isExistingEmail', 'isExistingUuid')
             ->withAnyArgs()
             ->andReturnFalse()
             ->getMock();
 
         $this->messageService = app(TextMessageService::class);
-        $uuidService = app(UuidService::class);
-        $this->validator = new UserCreateValidator($queryMock, $this->messageService, $uuidService);
+        $this->uuidService = app(UuidService::class);
+        $this->validator = new UserCreateValidator($userQueryMock, $this->messageService, $this->uuidService);
     }
 
     /**
      * @dataProvider userDataProvider
      */
-    public function testUserDtoValidate(array $userData, bool $isSuccessValidate, string $messageKey): void
+    public function testUserDtoValidate(array $userData, bool $isValid, string $messageKey): void
     {
         $this->assertEmpty($this->validator->getErrorMessage());
-
         $userDto = UserSignUpDto::fromArray($userData);
 
-        $this->assertSame($isSuccessValidate, $this->validator->validate($userDto));
+        $this->assertSame($isValid, $this->validator->validate($userDto));
 
-        if (! $isSuccessValidate) {
+        if (! $isValid) {
             $errorMessage = $this->messageService->getText($messageKey);
             $this->assertSame($errorMessage, $this->validator->getErrorMessage());
         }
@@ -58,9 +58,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123@test.com',
                     'password' => '12345678',
                     'password_confirmation' => '12345678',
-                    'uuid' => '63db0062-a80a-11eb-a4c0-3aaa5fd72a6b',
+                    'uuid' => '1434111c-f8c2-4542-a8ef-996e097223a8',
                 ],
-                'isSuccessValidate' => true,
+                'isValid' => true,
                 'messageKey' => '',
             ],
             [
@@ -69,8 +69,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123@test.com',
                     'password' => '12345678',
                     'password_confirmation' => '12345678',
+                    'uuid' => '66a91358-3837-461a-93f7-81f2a5c7f845',
                 ],
-                'isSuccessValidate' => false,
+                'isValid' => false,
                 'messageKey' => 'validation.user.name_length',
             ],
             [
@@ -79,8 +80,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123est.com',
                     'password' => '12345678',
                     'password_confirmation' => '12345678',
+                    'uuid' => '1434111c-f8c2-4542-a8ef-996e097223a8',
                 ],
-                'isSuccessValidate' => false,
+                'isValid' => false,
                 'messageKey' => 'validation.user.email_is_invalid',
             ],
             [
@@ -89,8 +91,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123@test.com',
                     'password' => '123456',
                     'password_confirmation' => '123456',
+                    'uuid' => '1434111c-f8c2-4542-a8ef-996e097223a8',
                 ],
-                'isSuccessValidate' => false,
+                'isValid' => false,
                 'messageKey' => 'validation.user.password_length',
             ],
             [
@@ -99,8 +102,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123@test.com',
                     'password' => '12345678',
                     'password_confirmation' => '123',
+                    'uuid' => '1434111c-f8c2-4542-a8ef-996e097223a8',
                 ],
-                'isSuccessValidate' => false,
+                'isValid' => false,
                 'messageKey' => 'validation.user.password_confirm',
             ],
             [
@@ -109,9 +113,9 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
                     'email' => '123@test.com',
                     'password' => '12345678',
                     'password_confirmation' => '12345678',
-                    'uuid' => 'ddff44',
+                    'uuid' => 'f4f8f1fef50',
                 ],
-                'isSuccessValidate' => false,
+                'isValid' => false,
                 'messageKey' => 'validation.user.invalid_uuid',
             ],
         ];

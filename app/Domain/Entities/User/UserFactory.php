@@ -18,13 +18,11 @@ class UserFactory
 
     public function getFromSignUpDto(UserSignUpDto $dto): User
     {
-        $uuid = empty($dto->uuid) ? $this->uuidService->getUuid() : $dto->uuid;
-
-        $user = new User($dto->email, $uuid);
+        $user = new User($dto->email, $dto->uuid);
         $user->setName($dto->name);
         $user->setPassword($dto->password);
         $user->addRole(UserRole::USER);
-        $user->setState(UserState::UN_VERIFIED);
+        $user->setState(UserState::UNVERIFIED);
 
         return $user;
     }

@@ -16,5 +16,6 @@ return [
         'email' => 'Email',
         'password' => 'Password',
         'password_confirm' => 'Confirm Password',
+        'errors_message' => 'Errors message:',
     ],
 ];

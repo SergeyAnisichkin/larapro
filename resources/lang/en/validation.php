@@ -157,5 +157,6 @@ return [
         'email_is_invalid' => 'The Email is invalid. ',
         'email_already_exists' => 'Email already exists. ',
         'invalid_uuid' => 'The UUID is invalid. ',
+        'user_uuid_already_exists' => 'User uuid already exists. ',
     ],
 ];

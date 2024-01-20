@@ -18,7 +18,7 @@ class UuidService
         return $this->uuidRepository->getUuid();
     }
 
-    public function isUuid($uuid): bool
+    public function isUuid(string $uuid): bool
     {
         return $this->uuidRepository->isUuid($uuid);
     }

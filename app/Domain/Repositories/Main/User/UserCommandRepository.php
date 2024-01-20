@@ -18,6 +18,7 @@ class UserCommandRepository
             $userModel = UserModel::create([
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
+                'uuid' => $user->getUuid(),
                 'password' => Hash::make($user->getPassword()),
             ]);
 

@@ -1,4 +1,12 @@
+@php
+    /**
+     * @var \App\Domain\Dto\User\SignUpPageData $data
+     */
+@endphp
+
 @extends('layouts.app')
+
+@include('components.form-errors-message')
 
 @section('content')
 <div class="container">
@@ -60,6 +68,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <input type="hidden" name="uuid" required value="{{ $data->uuid }}">
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

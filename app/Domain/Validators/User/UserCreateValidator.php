@@ -95,11 +95,14 @@ final class UserCreateValidator
 
     private function validateUuid(UserSignUpDto $userDto): void
     {
-        if (
-            ! empty($userDto->uuid)
-            && ! $this->uuidService->isUuid($userDto->uuid)
-        ) {
+        if (! $this->uuidService->isUuid($userDto->uuid)) {
             $this->messages[] = $this->textService->getText('validation.user.invalid_uuid');
+
+            return;
+        }
+
+        if ($this->userQueryRepository->isExistingUuid($userDto->uuid)) {
+            $this->messages[] = $this->textService->getText('validation.user.user_uuid_already_exists');
         }
     }
 }

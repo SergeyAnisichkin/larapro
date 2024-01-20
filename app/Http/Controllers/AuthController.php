@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Domain\Dto\User\UserSignUpDto;
+use App\Domain\Services\Common\UuidService;
+use App\Domain\Services\User\UserAuthPageDataService;
 use App\Domain\Services\User\UserService;
 use App\Domain\Validators\User\UserCreateValidator;
 use Illuminate\Http\RedirectResponse;
@@ -17,21 +19,23 @@ class AuthController extends Controller
     public function __construct(
         private readonly UserCreateValidator $userCreateValidator,
         private readonly UserService $userService,
+        private readonly UserAuthPageDataService $authPageDataService,
     ) {
     }
 
     public function getSignUpPage(): View
     {
-        return view('auth-sign.sign-up');
+        $data = $this->authPageDataService->getSignUpPageData();
+
+        return view('auth-sign.sign-up', ['data' => $data]);
     }
 
     public function signUpUser(Request $request): View|RedirectResponse
     {
         $userDto = UserSignUpDto::fromArray($request->all());
+        $isValid = $this->userCreateValidator->validate($userDto);
 
-        $isSuccessValidation = $this->userCreateValidator->validate($userDto);
-
-        if ($isSuccessValidation) {
+        if ($isValid) {
             $userId = $this->userService->create($userDto);
             Auth::loginUsingId($userId);
 
