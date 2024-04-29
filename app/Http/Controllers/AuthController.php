@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Domain\Dto\User\UserSignUpDto;
-use App\Domain\Services\Common\UuidService;
 use App\Domain\Services\User\UserAuthPageDataService;
 use App\Domain\Services\User\UserService;
 use App\Domain\Validators\User\UserCreateValidator;
