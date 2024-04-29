@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Domain\Dto\User\UserSignUpDto;
+use App\Domain\Entities\User\UserFactory;
 use App\Domain\Repositories\Main\User\UserQueryRepository;
 use App\Domain\Services\Common\TextMessageService;
 use App\Domain\Services\Common\UuidService;
@@ -17,6 +18,7 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
     private TextMessageService $messageService;
     private UserCreateValidator $validator;
     private UuidService $uuidService;
+    private UserFactory $userFactory;
 
     protected function setUp(): void
     {
@@ -31,10 +33,11 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
         $this->messageService = app(TextMessageService::class);
         $this->uuidService = app(UuidService::class);
         $this->validator = new UserCreateValidator($userQueryMock, $this->messageService, $this->uuidService);
+        $this->userFactory = app(UserFactory::class);
     }
 
     /**
-     * @dataProvider userDataProvider
+     * @dataProvider userValidateDataProvider
      */
     public function testUserDtoValidate(array $userData, bool $isValid, string $messageKey): void
     {
@@ -49,7 +52,44 @@ class UserCreateValidatorTest extends AbstractUnitTestCase
         }
     }
 
-    private function userDataProvider(): array
+    /**
+     * @dataProvider userCreateDataProvider
+     */
+    public function testCreateUserFromDto(array $userData): void
+    {
+        $userDto = UserSignUpDto::fromArray($userData);
+
+        $user = $this->userFactory->getFromSignUpDto($userDto);
+
+        $this->assertSame($userData['uuid'], $user->getUuid());
+        $this->assertSame($userData['email'], $user->getEmail());
+    }
+
+    private function userCreateDataProvider(): array
+    {
+        return [
+            [
+                'data' => [
+                    'name' => 'test name',
+                    'email' => '123@test.com',
+                    'password' => '12345678',
+                    'password_confirmation' => '12345678',
+                    'uuid' => '1434111c-f8c2-4542-a8ef-996e097223a8',
+                ],
+            ],
+            [
+                'data' => [
+                    'name' => 'test name more...',
+                    'email' => 'testMore@test.com',
+                    'password' => '1234567890',
+                    'password_confirmation' => '1234567890',
+                    'uuid' => '1fcda82f-8044-4875-b573-3f1ba0d2dde0',
+                ],
+            ],
+        ];
+    }
+
+    private function userValidateDataProvider(): array
     {
         return [
             [
