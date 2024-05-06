@@ -21,9 +21,8 @@ final class UserService
     {
         $user = $this->userFactory->getFromSignUpDto($userDto);
         $userId = $this->userCommandRepository->create($user);
-
-        $userCreatedEvent = new UserCreated($user);
-        $user->addEvent($userCreatedEvent);
+        $user->addEvent(new UserCreated($user));
+        $user->dispatchEvents();
         // todo add dispatcher events for aggregate
 
         return $userId;

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Domain\Events\User\UserCreated;
+use App\Domain\Listeners\User\SendUserCreatedToManagerMessage;
+use App\Domain\Listeners\User\SendUserVerificationMessage;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use App\Observers\BlogCategoryObserver;
@@ -21,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        UserCreated::class => [
+            SendUserVerificationMessage::class,
+            SendUserCreatedToManagerMessage::class
         ],
     ];
 

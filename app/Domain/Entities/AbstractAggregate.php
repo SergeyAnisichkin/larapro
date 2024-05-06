@@ -36,4 +36,11 @@ abstract class AbstractAggregate
     {
         return $this->events;
     }
+
+    public function dispatchEvents(): void
+    {
+        foreach ($this->events as $event) {
+            dispatch($event);
+        }
+    }
 }
