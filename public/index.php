@@ -54,9 +54,9 @@ $response = tap($kernel->handle(
 
 $kernel->terminate($request, $response);
 
-require_once __DIR__ . '/../config/constants.php';
+//require_once __DIR__ . '/../config/constants.php';
 require_once __DIR__ . '/../config/params.php';
 require_once __DIR__ . '/../config/init.php';
-require_once __DIR__ . '/../resources/libs/functions.php';
+//require_once __DIR__ . '/../resources/libs/functions.php';
 
 new \App\SBlog\Core\BlogApp();
