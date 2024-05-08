@@ -23,7 +23,6 @@ final class UserService
         $userId = $this->userCommandRepository->create($user);
         $user->addEvent(new UserCreated($user));
         $user->dispatchEvents();
-        // todo add dispatcher events for aggregate
 
         return $userId;
     }
