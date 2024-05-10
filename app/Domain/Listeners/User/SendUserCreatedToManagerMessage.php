@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Listeners\User;
 
-use App\Domain\Interfaces\AggregateEventInterface;
+use App\Domain\Events\AbstractAggregateEvent;
 
 class SendUserCreatedToManagerMessage
 {
-    public function handle(AggregateEventInterface $event): void
+    public function handle(AbstractAggregateEvent $event): void
     {
-        info('test', ['456']);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Entities;
 
-use App\Domain\Interfaces\AggregateEventInterface;
+use App\Domain\Events\AbstractAggregateEvent;
 
 abstract class AbstractAggregate
 {
@@ -27,7 +27,7 @@ abstract class AbstractAggregate
         return $this->id;
     }
 
-    public function addEvent(AggregateEventInterface $event): void
+    public function addEvent(AbstractAggregateEvent $event): void
     {
         $this->events[] = $event;
     }
@@ -40,7 +40,7 @@ abstract class AbstractAggregate
     public function dispatchEvents(): void
     {
         foreach ($this->events as $event) {
-            dispatch($event);
+            event($event);
         }
     }
 }
